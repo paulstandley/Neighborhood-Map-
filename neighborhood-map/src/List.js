@@ -2,10 +2,18 @@ import React, { Component } from 'react'
 
 
 class List extends Component {
-  state = {  }
-  render() { 
+  state = { 
+    hasDATA: false
+   }
+  render() {
+    if(this.state.hasDATA) {
+      console.log(this.props);
+    } 
+    console.log(this.props);
     return ( 
-      <h1>YO! Dudes list yerr</h1>
+      <div>
+        <h1>LIST COMPONENT</h1>
+      </div>
      );
   }
 }
