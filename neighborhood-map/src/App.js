@@ -24,6 +24,17 @@ class App extends Component {
         <header>
         <h1>Neighborhood Map</h1>
         </header>
+        <main id="mainPage" className="main-page">
+          <section id="sectionList" className="section-list">
+
+          </section>
+          <section id="sectionMap" className="section-map">
+
+          </section>
+        </main>
+        <footer>
+          Udacitys last project for the FEND Nano Degree Program udacity.com/nanodegrees
+        </footer>
       </div>
     );
   }

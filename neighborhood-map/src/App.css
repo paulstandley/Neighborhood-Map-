@@ -1,3 +1,4 @@
+/* Mobile css */
 .App {
   font-family: 'Indie Flower', cursive;
 }
@@ -12,12 +13,24 @@ header > h1 {
   font-family: 'Notable', sans-serif;
   text-align: center;
   font-size: 1.4rem;
-  color: gray;
+  color: black;
   text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
   padding: 0;
   margin: 0;
 }
 
+footer {
+  font-family: 'Notable', sans-serif;
+  text-align: center;
+  font-size: 0.4rem;
+  color: black;
+  background-color: antiquewhite;
+  text-shadow: 0.01rem 0.02rem darkgrey, 0.02rem 0.03rem gray, 0.04rem 0.05rem lightgrey;
+  padding: 1.2em;
+  margin: 0.2em;
+  border: 0.1em ridge gray;
+}
+/* desktop css */
 @media screen and (min-width: 800px) {
   .App {
     font-family: 'Indie Flower', cursive;
@@ -26,17 +39,29 @@ header > h1 {
     background-color: antiquewhite;
     padding: 1.4em;
     margin: 0.3em;
-    border: 0.3em ridge gray;
+    border: 0.2em ridge gray;
   }
   
   header > h1 {
     font-family: 'Notable', sans-serif;
     text-align: center;
     font-size: 2.6rem;
-    color: gray;
+    color: black;
     text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
     padding: 0;
     margin: 0;
   }
   
+  footer {
+    font-family: 'Notable', sans-serif;
+    text-align: center;
+    font-size: 0.6rem;
+    color: black;
+    background-color: antiquewhite;
+    text-shadow: 0.01rem 0.02rem darkgrey, 0.02rem 0.03rem gray, 0.04rem 0.05rem lightgrey;
+    padding: 1.4em;
+    margin: 0.3em;
+    border: 0.2em ridge gray;
+  }
+
 }
