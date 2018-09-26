@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import List from './List';
+import Map from './Map';
 import './App.css';
 
 // get four squre API display top 5
@@ -26,10 +28,10 @@ class App extends Component {
         </header>
         <main id="mainPage" className="main-page">
           <section id="sectionList" className="section-list">
-
+            <List/>
           </section>
           <section id="sectionMap" className="section-map">
-
+            <Map/>
           </section>
         </main>
         <footer>

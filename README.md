@@ -4,15 +4,17 @@
 
 ## by **__PAUL STANDLEY__**
 
----
-
-## UDACITY PROJECT-8
-
-### Project __[Rubrick](https://review.udacity.com/#!/rubrics/1351/view)__
+Udacitys last project for the FEND Nano Degree Program [NanoDegrees](udacity.com/nanodegrees)
 
 ---
 
-### Dependencies
+### UDACITY PROJECT-8
+
+#### Project __[Rubrick](https://review.udacity.com/#!/rubrics/1351/view)__
+
+---
+
+## _Dependencies_
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
