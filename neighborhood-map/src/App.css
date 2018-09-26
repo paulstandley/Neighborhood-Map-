@@ -1,4 +1,42 @@
 .App {
-  font-family: 'Notable', sans-serif !important;
   font-family: 'Indie Flower', cursive;
+}
+header {
+  background-color: antiquewhite;
+  padding: 1.2em;
+  margin: 0.2em;
+  border: 0.1em ridge gray;
+}
+
+header > h1 {
+  font-family: 'Notable', sans-serif;
+  text-align: center;
+  font-size: 1.4rem;
+  color: gray;
+  text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (min-width: 800px) {
+  .App {
+    font-family: 'Indie Flower', cursive;
+  }
+  header {
+    background-color: antiquewhite;
+    padding: 1.4em;
+    margin: 0.3em;
+    border: 0.3em ridge gray;
+  }
+  
+  header > h1 {
+    font-family: 'Notable', sans-serif;
+    text-align: center;
+    font-size: 2.6rem;
+    color: gray;
+    text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
+    padding: 0;
+    margin: 0;
+  }
+  
 }
