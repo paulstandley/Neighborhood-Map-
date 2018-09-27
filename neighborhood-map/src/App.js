@@ -22,7 +22,10 @@ class App extends Component {
         this.setState({foursquare: myJson});
     }).catch(error => console.error('Error:', error));
   }
-  
+/* event handeler */  
+  updateQueryHandeler = (evt) => {
+    console.log(evt);
+  }
 
   render() {
     console.log(this.state.foursquare);
@@ -34,6 +37,11 @@ class App extends Component {
         </header>
         <main id="mainPage" className="main-page">
           <section id="sectionList" className="section-list">
+            <input type="text" 
+            id="sectionInput" 
+            className="section-input" 
+            placeholder="searh"
+            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
             <List Data={DATA}/>
           </section>
           <section id="sectionMap" className="section-map">
