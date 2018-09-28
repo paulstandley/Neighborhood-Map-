@@ -21,7 +21,7 @@ class App extends Component {
   state = {
     foursquare: {},
     filteredDATA: [],
-    splashPage: [
+    venue: [
       {
         name: "Whittles",
         address: "27 King Street Oldham",
@@ -62,7 +62,7 @@ class App extends Component {
         location: { lat: 53.539939, lng: -2.113569},
         id: 5,
       }
-      ],
+      ] ,
     query: ''
   }
 
@@ -97,13 +97,12 @@ class App extends Component {
     let filtered;
     if(this.state.query) {
       const match = new RegExp(escapeRegExp(this.state.query),'i');
-      //filtered = this.state.splashPage.filter((places) => match.test(places.name));
+      //filtered = this.state.venue.filter((places) => match.test(places.name));
       filtered = this.state.foursquare.response.groups[0].items.filter((value) => match.test(value.venue.name));
       console.log(filtered)
+      filtered.sort(sortBy('venue.name'));
       //console.log(filtered[0].venue.name)
       //console.log(filtered[1].venue.id)
-
-      
     }else{
       filtered = this.state.splashPage;
     }
@@ -146,7 +145,7 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List Data={DATA} splashPage={filtered}/>
+              <List Data={DATA} venue={filtered}/>
             </section>
             <section id="sectionMap" className="section-map">
               <Map Data={DATA}/>
