@@ -23,6 +23,10 @@ header > h1 {
   background-color: aliceblue;
 }
 
+.map {
+  height: 300px;
+}
+
 footer {
   font-family: 'Notable', sans-serif;
   text-align: center;
@@ -60,6 +64,10 @@ footer {
     background-color: aliceblue;
   }
 
+  .map {
+    height: 500px;
+  }
+
   footer {
     font-family: 'Notable', sans-serif;
     text-align: center;
@@ -73,3 +81,4 @@ footer {
   }
 
 }
+ 

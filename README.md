@@ -40,6 +40,12 @@ yarn add prop-types
 npm install --save escape-string-regexp sort-by
 ```
 
+### google-maps-react
+
+```BASH
+npm install --save google-maps-react
+```
+
 ---
 
 _**[Goggle Fonts](https://fonts.google.com/?selection.family=Indie+Flower|Notable)**_
