@@ -100,7 +100,7 @@ class App extends Component {
               <List Data={DATA} venue={filtered}/>
             </section>
             <section id="sectionMap" className="section-map">
-              <Map Data={DATA}/>
+              <Map Data={DATA} venue={filtered}/>
             </section>
           </main>
           <footer>
