@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 import escapeRegExp from 'escape-string-regexp';
+import DataFile from './DataFile.json';
 import List from './List';
 import Map from './Map';
 import './App.css';
@@ -20,11 +21,13 @@ class App extends Component {
 
   state = {
     foursquare: {},
-    filteredDATA: [],
+    DATAFILE: DataFile.response.groups[0].items,
     query: ''
   }
 
+  
   componentDidMount() {
+    
     /* foursquare data for Oldham docs https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch	https://www.npmjs.com/package/google-maps-react 
     https://foursquare.com/developers/explore#req=venues%2Fexplore%3Fnear%3DOldham */        
     fetch('https://api.foursquare.com/v2/venues/explore?near=Oldham&client_id=AZCVJUXLZ4L2HW1W5XXE5AQBHZVXFWFK3PASLVFJGL4BVRXH&client_secret=VP5GYXQT3E3IDSSOEV5BWCKIAUGLJ4D5RX3NU2B305NSDT0P&v=20180826')
@@ -38,11 +41,14 @@ class App extends Component {
 /* event handeler */  
   updateQueryHandeler = (query) => {
     this.setState({ query: query.trim()} );
-  
+    
   }
+  
 
   render() {
     console.log(this.state.foursquare);
+    console.log(this.state.filteredDATA)
+    console.log(DataFile.response.groups[0].items);
     let { DATA } = this.state.foursquare;
     
     let filtered;
@@ -56,7 +62,7 @@ class App extends Component {
       //console.log(filtered[0].venue.name)
       //console.log(filtered[1].venue.id)
     }else{
-      filtered = this.state.splashPage;
+      filtered = this.state.DataFile;
     }
     if(DATA !== undefined) {
       return (
@@ -72,10 +78,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List Data={DATA} />
+              <List Data={DATA} venue={filtered} />
             </section>
             <section id="sectionMap" className="section-map">
-              <Map Data={DATA}/>
+              <Map Data={DATA} venue={filtered} />
             </section>
           </main>
           <footer>
@@ -97,10 +103,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List Data={DATA} venue={filtered}/>
+              <List Data={DATA}  start={DataFile.response.groups[0].items}/>
             </section>
             <section id="sectionMap" className="section-map">
-              <Map Data={DATA} venue={filtered}/>
+              <Map Data={DATA} start={DataFile.response.groups[0].items}/>
             </section>
           </main>
           <footer>

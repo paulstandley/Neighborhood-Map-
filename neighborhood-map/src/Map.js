@@ -6,60 +6,88 @@ import './App.css';
 
 const style = {
   width: '100%',
-  height: '100%'
+  height: '100%',
+  position: 'relative'
 }
 
 export class MapContainer extends Component {
  
 
   state = {
-    selectedPlace: ["Helow map"]
-  }
+    showingInfoWindow: true,
+    activeMarker: {},
+    selectedPlace: {},
+  };
 
-  onMapClicked = (evt) => {
-    console.log(evt);
-    
-  }
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  };
 
-  onMarkerClick = (evt) => {
-    console.log(evt);
+  onMarkerClick = (props, marker, evt) => {
+  console.log(marker)  
+  console.log(evt)
+  console.log(props)
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
   }
-
   onInfoWindowClose = (evt) => {
     console.log(evt);
   }
-  
+  /*
+  onMouseoverMarker = (props, marker, evt) => {
+    console.log(evt);
+  }
+  */
   render() {
-  
+     console.log(this.props.venue)
+     console.log(this.props.start)
     return (
       <Map google={this.props.google} 
+      className={'map'}
       style={style}
           initialCenter={{
             lat: 53.540203, lng: -2.117056 
           }}
-          zoom={15}
+          zoom={11}
           onClick={this.onMapClicked} >
  
       {this.props.venue !== undefined ? this.props.venue.map((current, index, array) => (
         
-        <Marker key={index} onClick={this.onMarkerClick}
+        <Marker 
+        className={'marker'}
+        key={index + 2020 + index} 
+        onClick={this.onMarkerClick}
+        //onMouseover={this.onMouseoverMarker}
         name={current.venue.name}
+        title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
-        }} 
-        />
-/*
-        <InfoWindow onClose={this.onInfoWindowClose}>
-          <div>
-            <h1>{current.venue.name}</h1>
-          </div>
-        </InfoWindow>
-        */
-      )) :  '' /* (
-        <Marker onClick={this.onMarkerClick}
-        name={this.state.selectedPlace.name} />
-      ) */}
+        }} />
         
+      
+      )) : this.props.start.map((current, index, array) => (
+        
+        <Marker 
+        className={'marker'}
+        key={index + 2424 + index} 
+        onClick={this.onMarkerClick}
+        //onMouseover={this.onMouseoverMarker}
+        name={current.venue.name}
+        title={array[index].venue.location.address}
+        position={{
+          lat: current.venue.location.lat, lng: current.venue.location.lng
+        }} />
+        
+      
+      )) }
       </Map>
     );
   }
