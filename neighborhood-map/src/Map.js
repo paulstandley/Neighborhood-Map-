@@ -31,16 +31,18 @@ export class MapContainer extends Component {
 
   console.log(marker)  
   console.log(evt)
-  console.log(props)
+  console.dir(props.google.maps.Animation.BOUNCE)
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
+      showingactiveMarker: true,
       showingInfoWindow: true
     });
   }
   /*
   onInfoWindowClose = (evt) => {
     console.log(evt);
+    animation={activeMarker ? (item.name === activeMarker.title ? '1' : '0') : '0'}
   }
 
   onMouseoverMarker = (props, marker, evt) => {
@@ -71,7 +73,8 @@ export class MapContainer extends Component {
         title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
-        }} />
+        }} 
+        animation={this.state.showingactiveMarker ? '2' : '0'} />
         
       
       )) : this.props.start.map((current, index, array) => (
@@ -85,7 +88,8 @@ export class MapContainer extends Component {
         title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
-        }} />
+        }}
+        animation={this.state.showingactiveMarker ? '2' : '0'} />
         
       
       )) }

@@ -72,6 +72,8 @@ class App extends Component {
           <main id="mainPage" className="main-page">
             <section id="sectionList" className="section-list">
               <input type="text" 
+              aria-label="text"
+              aria-required="true"
               id="sectionInput" 
               className="section-input" 
               placeholder="Filter places by name"
@@ -97,6 +99,8 @@ class App extends Component {
           <main id="mainPage" className="main-page">
             <section id="sectionList" className="section-list">
               <input type="text" 
+              aria-label="text"
+              aria-required="true"
               id="sectionInput" 
               className="section-input" 
               placeholder="Filter places by name"

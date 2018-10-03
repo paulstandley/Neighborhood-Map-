@@ -18,7 +18,7 @@ class List extends Component {
               {current.venue !== undefined ? <span onClick={(evt) => {
                 console.log(evt.target)
                }}>
-                <hr />
+             
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3>{current.venue.name}</h3>
                 
@@ -39,7 +39,7 @@ class List extends Component {
                 console.log(evt.detail)
                 console.log(evt.getModifierState)
                }}>
-                <hr />
+            
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3>{current.venue.name}</h3>
                

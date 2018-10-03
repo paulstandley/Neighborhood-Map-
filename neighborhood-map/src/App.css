@@ -1,5 +1,7 @@
 /* Mobile css */
 .App {
+  margin: 0;
+  padding: 0;
   font-family: 'Indie Flower', cursive;
 }
 header {
@@ -19,22 +21,33 @@ header > h1 {
   margin: 0;
 }
 
+#sectionInput {
+  padding: 0.9em;
+  margin: 0.6em;
+  width: 100%;
+}
+
 .section-list {
+  margin: 0;
+  padding: 0;
   background-color: silver;
-  width: 30%;
+  width: 100%;
 }
 
 .section-list li {
-  justify-content: center;
+  border: 0.2em ridge darkblue;
+  list-style: none;
 }
+
 .section-list img {
   border: 0.25rem ridge darkblue;
   border-radius: 0.75rem;
 }
+
 .section-list h2 {
   font-family: 'Notable', sans-serif;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: darkblue;
   text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
   padding: 0;
@@ -43,7 +56,7 @@ header > h1 {
 
 .section-list h3 {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: darkblue;
   text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
   padding: 0;
