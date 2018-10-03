@@ -19,6 +19,37 @@ header > h1 {
   margin: 0;
 }
 
+.section-list {
+  background-color: silver;
+  width: 30%;
+}
+
+.section-list li {
+  justify-content: center;
+}
+.section-list img {
+  border: 0.25rem ridge darkblue;
+  border-radius: 0.75rem;
+}
+.section-list h2 {
+  font-family: 'Notable', sans-serif;
+  text-align: center;
+  font-size: 1.4rem;
+  color: darkblue;
+  text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
+  padding: 0;
+  margin: 0;
+}
+
+.section-list h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  color: darkblue;
+  text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
+  padding: 0;
+  margin: 0;
+}
+
 .main-page {
   background-color: aliceblue;
 }
@@ -64,8 +95,41 @@ footer {
     background-color: aliceblue;
   }
 
-  .map > .marker {
+  .map {
     background-color: blueviolet;
+  }
+  
+  .section-list {
+    background-color: silver;
+    width: 100%;
+  }
+
+  .section-list li {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+  }
+  .section-list img {
+    border: 0.25rem ridge darkblue;
+    border-radius: 0.75rem;
+  }
+  .section-list h2 {
+    font-family: 'Notable', sans-serif;
+    text-align: center;
+    font-size: 1.4rem;
+    color: darkblue;
+    text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
+    padding: 0;
+    margin: 0;
+  }
+
+  .section-list h3 {
+    text-align: center;
+    font-size: 1.4rem;
+    color: darkblue;
+    text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
+    padding: 0;
+    margin: 0;
   }
 
   footer {

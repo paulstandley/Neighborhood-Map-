@@ -21,7 +21,7 @@ class App extends Component {
 
   state = {
     foursquare: {},
-    DATAFILE: DataFile.response.groups[0].items,
+    DATAFILE: DataFile.response.groups[0].items.sort(sortBy('venue.name')),
     query: ''
   }
 
@@ -47,9 +47,8 @@ class App extends Component {
 
   render() {
     console.log(this.state.foursquare);
-    console.log(this.state.filteredDATA)
+    console.log(this.state)
     console.log(DataFile.response.groups[0].items);
-    let { DATA } = this.state.foursquare;
     
     let filtered;
     if(this.state.query) {
@@ -58,13 +57,13 @@ class App extends Component {
       filtered = this.state.foursquare.filter((value) => match.test(value.venue.name));
       console.log(filtered)
       filtered.sort(sortBy('venue.name'));
-      
+      DataFile.response.groups[0].items.sort(sortBy('venue.name'));
       //console.log(filtered[0].venue.name)
       //console.log(filtered[1].venue.id)
     }else{
       filtered = this.state.DataFile;
     }
-    if(DATA !== undefined) {
+    if(filtered !== undefined) {
       return (
         <div className="App">
           <header>
@@ -78,10 +77,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List Data={DATA} venue={filtered} />
+              <List venue={filtered} />
             </section>
             <section id="sectionMap" className="section-map">
-              <Map Data={DATA} venue={filtered} />
+              <Map venue={filtered} />
             </section>
           </main>
           <footer>
@@ -103,10 +102,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List Data={DATA}  start={DataFile.response.groups[0].items}/>
+              <List start={DataFile.response.groups[0].items}/>
             </section>
             <section id="sectionMap" className="section-map">
-              <Map Data={DATA} start={DataFile.response.groups[0].items}/>
+              <Map start={DataFile.response.groups[0].items}/>
             </section>
           </main>
           <footer>

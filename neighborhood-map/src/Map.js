@@ -12,9 +12,8 @@ const style = {
 
 export class MapContainer extends Component {
  
-
   state = {
-    showingInfoWindow: true,
+    showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
   };
@@ -22,13 +21,14 @@ export class MapContainer extends Component {
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
-        showingInfoWindow: false,
+        showingInfoWindow: true,
         activeMarker: null
       })
     }
   };
 
   onMarkerClick = (props, marker, evt) => {
+
   console.log(marker)  
   console.log(evt)
   console.log(props)
@@ -38,10 +38,11 @@ export class MapContainer extends Component {
       showingInfoWindow: true
     });
   }
+  /*
   onInfoWindowClose = (evt) => {
     console.log(evt);
   }
-  /*
+
   onMouseoverMarker = (props, marker, evt) => {
     console.log(evt);
   }
@@ -51,19 +52,19 @@ export class MapContainer extends Component {
      console.log(this.props.start)
     return (
       <Map google={this.props.google} 
-      className={'map'}
-      style={style}
-          initialCenter={{
-            lat: 53.540203, lng: -2.117056 
-          }}
-          zoom={11}
-          onClick={this.onMapClicked} >
+        className={'map'}
+        style={style}
+        initialCenter={{
+          lat: 53.540203, lng: -2.117056 
+        }}
+        zoom={11}
+        onClick={() => this.onMapClicked} >
  
       {this.props.venue !== undefined ? this.props.venue.map((current, index, array) => (
         
-        <Marker 
+      <Marker 
         className={'marker'}
-        key={index + 2020 + index} 
+        key={index + 20120 + index} 
         onClick={this.onMarkerClick}
         //onMouseover={this.onMouseoverMarker}
         name={current.venue.name}
@@ -75,9 +76,9 @@ export class MapContainer extends Component {
       
       )) : this.props.start.map((current, index, array) => (
         
-        <Marker 
+      <Marker 
         className={'marker'}
-        key={index + 2424 + index} 
+        key={index + 24124 + index} 
         onClick={this.onMarkerClick}
         //onMouseover={this.onMouseoverMarker}
         name={current.venue.name}
