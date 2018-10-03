@@ -94,7 +94,7 @@ class App extends Component {
       return (
         <div className="App">
           <header>
-          <h1>NO DATA!</h1>
+          <h1>Neighborhood Map</h1>
           </header>
           <main id="mainPage" className="main-page">
             <section id="sectionList" className="section-list">

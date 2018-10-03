@@ -4,6 +4,11 @@
   padding: 0;
   font-family: 'Indie Flower', cursive;
 }
+
+.main-page {
+  background-color: aliceblue;
+}
+
 header {
   background-color: antiquewhite;
   padding: 1.2em;
@@ -21,9 +26,14 @@ header > h1 {
   margin: 0;
 }
 
+ol {
+  padding: 0;
+}
+
 #sectionInput {
-  padding: 0.9em;
-  margin: 0.6em;
+  background-color: lightcyan;
+  padding: 0.4em 0;
+  margin: 0;
   width: 100%;
 }
 
@@ -52,19 +62,6 @@ header > h1 {
   text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
   padding: 0;
   margin: 0;
-}
-
-.section-list h3 {
-  text-align: center;
-  font-size: 1rem;
-  color: darkblue;
-  text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
-  padding: 0;
-  margin: 0;
-}
-
-.main-page {
-  background-color: aliceblue;
 }
 
 .map {
@@ -107,42 +104,56 @@ footer {
   .main-page {
     background-color: aliceblue;
   }
-
-  .map {
-    background-color: blueviolet;
+  
+  ol {
+    padding: 0;
   }
   
-  .section-list {
-    background-color: silver;
+  #sectionInput {
+    background-color: lightcyan;
+    padding: 1.2em 0;
+    margin: 0;
     width: 100%;
   }
 
-  .section-list li {
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
+  .section-list {
+    margin: 0;
+    padding: 0;
+    background-color: silver;
+    width: 40%;
   }
+
+  .section-list li {
+    border: 0.2em ridge darkblue;
+    list-style: none;
+  }
+
   .section-list img {
     border: 0.25rem ridge darkblue;
     border-radius: 0.75rem;
   }
+
   .section-list h2 {
     font-family: 'Notable', sans-serif;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 2.1rem;
     color: darkblue;
     text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
     padding: 0;
     margin: 0;
   }
 
-  .section-list h3 {
-    text-align: center;
-    font-size: 1.4rem;
-    color: darkblue;
-    text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
-    padding: 0;
-    margin: 0;
+  .map {
+    top: 13%;
+    left: 40%
+  }
+  
+  #sectionMap > div > div.map {
+    width: 58vmax !important;
+  }
+
+  #sectionMap > div > div.map > div {
+    width: 100%;
   }
 
   footer {

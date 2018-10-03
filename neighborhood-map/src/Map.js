@@ -5,9 +5,8 @@ import './index.css';
 import './App.css';
 
 const style = {
-  width: '100%',
-  height: '100%',
-  position: 'relative'
+  width: '60pv',
+  height: '100%'
 }
 
 export class MapContainer extends Component {

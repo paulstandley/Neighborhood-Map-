@@ -8,7 +8,7 @@ class List extends Component {
     console.log(this.props.start)
     return ( 
       <div>
-        <h2>LIST COMPONENT</h2>
+        <h2>LIST PLACES</h2>
         <div>
           <ol>
             {this.props.venue !== undefined ? 
