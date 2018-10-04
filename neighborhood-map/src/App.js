@@ -85,9 +85,7 @@ class App extends Component {
               <Map venue={filtered} />
             </section>
           </main>
-          <footer>
-            Udacitys last project for the FEND Nano Degree Program udacity.com/nanodegrees
-          </footer>
+          
         </div>
       );
     }else{
@@ -112,9 +110,7 @@ class App extends Component {
               <Map start={DataFile.response.groups[0].items}/>
             </section>
           </main>
-          <footer>
-            Udacitys last project for the FEND Nano Degree Program udacity.com/nanodegrees
-          </footer>
+          
         </div>
       )
     }

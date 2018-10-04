@@ -5,7 +5,7 @@ import './index.css';
 import './App.css';
 
 const style = {
-  width: '60pv',
+  width: '100%',
   height: '100%'
 }
 

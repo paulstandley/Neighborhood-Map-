@@ -23,6 +23,13 @@ npm start
 
 ---
 
+## **Udacity Project 8 Rubrics**
+
+**_Link_** [Rubrics](https://review.udacity.com/#!/rubrics/1351/view)
+PROJECT SPECIFICATION **Neighborhood Map (React)**
+
+---
+
 ## **Dependencies**
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
@@ -69,15 +76,16 @@ font-family: 'Notable', sans-serif;
 
 ## **API**
 
-#### foursquare API [foursquare](https://foursquare.com)
+#### Foursquare API: [foursquare](https://foursquare.com)
 
 ---
 
 ## **Citation**
 
-* Favicon at favicon.cc by [gcoke1](https://www.favicon.cc/?action=icon&file_id=873941)
+* Favicon at favicon.cc by **_[gcoke1](https://www.favicon.cc/?action=icon&file_id=873941)_**
 
-* Goggle Fonts: _Notable_ By __Eli Block__
-Principal design and _Indie Flower_ By __Kimberly Geswein__
-Principal design
+* Goggle Fonts: _Notable_ By __Eli Block__ Principal design and _Indie Flower_ By __Kimberly Geswein__ Principal design
+
+* Image Hosting By: **_[Cloudinary](https://cloudinary.com/)_**
+
 ---
