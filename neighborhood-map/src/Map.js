@@ -58,7 +58,7 @@ export class MapContainer extends Component {
         initialCenter={{
           lat: 53.540203, lng: -2.117056 
         }}
-        zoom={11}
+        zoom={12}
         onClick={() => this.onMapClicked} >
  
       {this.props.venue !== undefined ? this.props.venue.map((current, index, array) => (
