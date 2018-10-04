@@ -5,8 +5,7 @@ import "./App.css";
 class List extends Component {
   
   render() {
-    console.log(this.props.venue)
-    console.log(this.props.start)
+   
     return ( 
       <div>
         <h2>LIST PLACES</h2>
@@ -17,7 +16,8 @@ class List extends Component {
               <li key={index + 354352 + index} >
   
               {current.venue !== undefined ? <span onClick={(evt) => {
-                console.log(evt.target)
+                this.props.clicked(evt);
+                console.log(evt)
                }}>
              
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
@@ -32,13 +32,8 @@ class List extends Component {
               <li key={index + 348734 + index}>
               
               {current.venue !== undefined ? <span onClick={(evt) => {
-                console.log(evt)
-                console.log(evt.target)
-                console.log(evt.timeStamp)
-                console.log(evt.eventPhase)
-                console.log(evt.relatedTarget)
-                console.log(evt.detail)
-                console.log(evt.getModifierState)
+                this.props.clicked(evt);
+                console.log(evt);
                }}>
             
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>

@@ -27,10 +27,8 @@ export class MapContainer extends Component {
   };
 
   onMarkerClick = (props, marker, evt) => {
-
-  console.log(marker)  
-  console.log(evt)
-  console.dir(props.google.maps.Animation.BOUNCE)
+    this.props.clicked(evt);
+    console.log(evt);
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -49,8 +47,7 @@ export class MapContainer extends Component {
   }
   */
   render() {
-     console.log(this.props.venue)
-     console.log(this.props.start)
+     
     return (
       <Map google={this.props.google} 
         className={'map'}

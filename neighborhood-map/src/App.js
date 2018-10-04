@@ -22,7 +22,10 @@ class App extends Component {
   state = {
     foursquare: {},
     DATAFILE: DataFile.response.groups[0].items.sort(sortBy('venue.name')),
-    query: ''
+    query: '',
+    clicked: (evt) => {
+      console.log(evt);
+    }
   }
 
   
@@ -34,7 +37,7 @@ class App extends Component {
     .then((response) => {
       return response.json();
     }).then((myJson) => {
-        console.log(JSON.stringify(myJson));
+    
         this.setState({foursquare: myJson.response.groups[0].items});
     }).catch(error => console.error('Error:', error));
   }
@@ -43,12 +46,8 @@ class App extends Component {
     this.setState({ query: query.trim()} );
     
   }
-  
 
   render() {
-    console.log(this.state.foursquare);
-    console.log(this.state)
-    console.log(DataFile.response.groups[0].items);
     
     let filtered;
     if(this.state.query) {
@@ -79,10 +78,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List venue={filtered} />
+              <List venue={filtered} clicked={this.state.clicked} />
             </section>
             <section id="sectionMap" className="section-map">
-              <Map venue={filtered} />
+              <Map venue={filtered} clicked={this.state.clicked} />
             </section>
           </main>
           
@@ -104,10 +103,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List start={DataFile.response.groups[0].items}/>
+              <List start={DataFile.response.groups[0].items} clicked={this.state.clicked} />
             </section>
             <section id="sectionMap" className="section-map">
-              <Map start={DataFile.response.groups[0].items}/>
+              <Map start={DataFile.response.groups[0].items} clicked={this.state.clicked} />
             </section>
           </main>
           
