@@ -24,7 +24,18 @@ class App extends Component {
     DATAFILE: DataFile.response.groups[0].items.sort(sortBy('venue.name')),
     query: '',
     clicked: (evt) => {
+      if(evt.va !== undefined) {
+        console.log(`Map Event`)
+        console.dir(evt);
+        console.log(evt.va.target)
+        console.log(evt.va.target.title)
+      }else{
+      console.log(`List Event`);
       console.log(evt);
+      console.log(evt.target)
+      console.dir(evt.target.textContent)
+      }
+      //console.log(evt.va.target.title)
     }
   }
 
@@ -78,10 +89,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List venue={filtered} clicked={this.state.clicked} />
+              <List venue={filtered} clicked={() => this.state.clicked.bind(this)} />
             </section>
             <section id="sectionMap" className="section-map">
-              <Map venue={filtered} clicked={this.state.clicked} />
+              <Map venue={filtered} clicked={() => this.state.clicked.bind(this)} />
             </section>
           </main>
           
@@ -103,10 +114,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List start={DataFile.response.groups[0].items} clicked={this.state.clicked} />
+              <List start={DataFile.response.groups[0].items} clicked={this.state.clicked.bind(this)} />
             </section>
             <section id="sectionMap" className="section-map">
-              <Map start={DataFile.response.groups[0].items} clicked={this.state.clicked} />
+              <Map start={DataFile.response.groups[0].items} clicked={this.state.clicked.bind(this)} />
             </section>
           </main>
           

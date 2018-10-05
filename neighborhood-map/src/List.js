@@ -15,7 +15,7 @@ class List extends Component {
             this.props.venue.map((current, index, array) => (
               <li key={index + 354352 + index} >
   
-              {current.venue !== undefined ? <span onClick={(evt) => {
+              {current.venue !== undefined ? <span id={`listId${index}`} onClick={(evt) => {
                 this.props.clicked(evt);
                 console.log(evt)
                }}>
@@ -31,7 +31,7 @@ class List extends Component {
             : this.props.start.map((current, index, array) => (
               <li key={index + 348734 + index}>
               
-              {current.venue !== undefined ? <span onClick={(evt) => {
+              {current.venue !== undefined ? <span id={`listId${index}`} onClick={(evt) => {
                 this.props.clicked(evt);
                 console.log(evt);
                }}>

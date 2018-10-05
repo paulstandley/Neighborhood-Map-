@@ -8,7 +8,7 @@ const style = {
   width: '100%',
   height: '100%'
 }
-
+let num = 1;
 export class MapContainer extends Component {
  
   state = {
@@ -62,8 +62,8 @@ export class MapContainer extends Component {
         
       <Marker 
         className={'marker'}
-        key={index + 20120 + index} 
-        onClick={this.onMarkerClick}
+        key={index + 201203 + index} 
+        onClick={this.onMarkerClick.bind(this)}
         //onMouseover={this.onMouseoverMarker}
         name={current.venue.name}
         title={array[index].venue.location.address}
@@ -77,8 +77,8 @@ export class MapContainer extends Component {
         
       <Marker 
         className={'marker'}
-        key={index + 24124 + index} 
-        onClick={this.onMarkerClick}
+        key={index + 241242 + index} 
+        onClick={this.onMarkerClick.bind(this)}
         //onMouseover={this.onMouseoverMarker}
         name={current.venue.name}
         title={array[index].venue.location.address}
