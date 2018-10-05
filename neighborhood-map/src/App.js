@@ -23,25 +23,6 @@ class App extends Component {
     foursquare: {},
     DATAFILE: DataFile.response.groups[0].items.sort(sortBy('venue.name')),
     query: '',
-    clicked: (evt) => {
-      console.log(evt)
-      if(evt.name !== undefined) {
-        console.log(`Map Event`);
-        console.log(evt);
-        console.log(evt.name);
-        console.log(evt.title);
-        console.log(evt.animation);
-        console.log(evt)
-      }else{
-      console.log(`List Event`);
-      console.log(evt);
-      console.log(evt.target)
-      console.log(evt.type)
-      console.log(evt.currentTarget)
-      console.log(evt.metaKey)
-      }
-      //console.log(evt.va.target.title)
-    },
     pick: {}
   }
 
@@ -72,6 +53,27 @@ class App extends Component {
     this.setState({ query: query.trim()} );
     
   }
+
+  clicked = (evt) => {
+    console.log(evt)
+    if(evt.name !== undefined) {
+      console.log(`Map Event`);
+      console.log(evt);
+      console.log(evt.name);//value for compare
+      console.log(evt.title);
+      console.log(evt.animation);
+      console.log(evt)
+    }else{
+      
+    console.log(`List Event`);
+    console.log(evt);
+    console.log(evt.target.innerText)//value for compare
+    console.log(evt.type)
+    console.log(evt.currentTarget)
+    console.log(evt.metaKey)
+    }
+    //console.log(evt.va.target.title)
+  };
 
   render() {
     if(this.state.pick.response !== undefined) {
@@ -114,10 +116,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List venue={filtered} pick={this.state.pick} clicked={this.state.clicked} />
+              <List venue={filtered} pick={this.state.pick} clicked={this.clicked} />
             </section>
             <section id="sectionMap" className="section-map">
-              <Map venue={filtered} clicked={this.state.clicked} />
+              <Map venue={filtered} clicked={this.clicked} />
             </section>
           </main>
           
@@ -139,10 +141,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List start={DataFile.response.groups[0].items} clicked={this.state.clicked} />
+              <List start={DataFile.response.groups[0].items} clicked={this.clicked} />
             </section>
             <section id="sectionMap" className="section-map">
-              <Map start={DataFile.response.groups[0].items} clicked={this.state.clicked} />
+              <Map start={DataFile.response.groups[0].items} clicked={this.clicked} />
             </section>
           </main>
           

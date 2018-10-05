@@ -15,6 +15,7 @@ export class MapContainer extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
+    showingactiveMarker: false
   };
 
   onMapClicked = (props) => {
@@ -27,7 +28,7 @@ export class MapContainer extends Component {
   };
 
   onMarkerClick = (props, marker, evt) => {
-    this.props.clicked(evt);
+    //this.props.clicked(evt);
     console.log(marker);
     console.log(marker.name)
     console.log(evt);
@@ -72,7 +73,7 @@ export class MapContainer extends Component {
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
         }} 
-        animation={this.state.activeMarker ? (this.props.venue.name === this.state.activeMarker.name ? '1' : '0') : '0'} />
+        animation={this.state.activeMarker ? (this.props.venue.name !== this.state.activeMarker.name ? '1' : '0') : '0'} />
         
       
       )) : this.props.start.map((current, index, array) => (
@@ -87,7 +88,7 @@ export class MapContainer extends Component {
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
         }}
-        animation={this.state.activeMarker ? (this.props.start.name === this.state.activeMarker.name ? '1' : '0') : '0'} />
+        animation={this.state.activeMarker ? (this.props.start.name !== this.state.activeMarker.name ? '1' : '0') : '0'} />
         
       
       )) }

@@ -15,7 +15,7 @@ class List extends Component {
             this.props.venue.map((current, index, array) => (
               <li key={index + 354352 + index} >
   
-              {current.venue !== undefined ? <span id={`listId${index}`} onClick={this.props.clicked.bind(this)}>
+              {current.venue !== undefined ? <span id={`listId_${index}`} onClick={this.props.clicked}>
              
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 
@@ -29,7 +29,7 @@ class List extends Component {
             : this.props.start.map((current, index, array) => (
               <li key={index + 348734 + index}>
               
-              {current.venue !== undefined ? <span id={`listId${index}`} onClick={this.props.clicked.bind(this)}>
+              {current.venue !== undefined ? <span id={`listId_${index}`} onClick={this.props.clicked}>
             
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3>{current.venue.name}</h3>
