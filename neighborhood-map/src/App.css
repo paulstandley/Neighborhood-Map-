@@ -65,13 +65,15 @@ ol {
   border-radius: 0.75rem;
   width: 8px;
   height: 8px;
+  padding: 0;
+  margin: 0;
 }
 
 .section-list h2 {
   font-family: 'Notable', sans-serif;
   text-align: center;
-  font-size: 1rem;
-  color: darkblue;
+  font-size: 1.2rem;
+  color: black;
   text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
   padding: 0;
   margin: 0;
@@ -154,7 +156,7 @@ ol {
     font-family: 'Notable', sans-serif;
     text-align: center;
     font-size: 2.2rem;
-    color: darkblue;
+    color: black;
     text-shadow: 0.1rem 0.1rem lightgrey, 0.1rem 0.2rem gray, 0.3rem 0.4rem darkgrey;
     padding: 0;
     margin: 0;

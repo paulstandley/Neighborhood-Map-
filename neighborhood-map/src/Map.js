@@ -8,7 +8,7 @@ const style = {
   width: '100%',
   height: '100%'
 }
-let num = 1;
+
 export class MapContainer extends Component {
  
   state = {
@@ -28,6 +28,8 @@ export class MapContainer extends Component {
 
   onMarkerClick = (props, marker, evt) => {
     this.props.clicked(evt);
+    console.log(marker);
+    console.log(marker.name)
     console.log(evt);
     this.setState({
       selectedPlace: props,
@@ -63,14 +65,14 @@ export class MapContainer extends Component {
       <Marker 
         className={'marker'}
         key={index + 201203 + index} 
-        onClick={this.onMarkerClick.bind(this)}
+        onClick={this.props.clicked}
         //onMouseover={this.onMouseoverMarker}
         name={current.venue.name}
         title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
         }} 
-        animation={this.state.showingactiveMarker ? '2' : '0'} />
+        animation={this.state.activeMarker ? (this.props.venue.name === this.state.activeMarker.name ? '1' : '0') : '0'} />
         
       
       )) : this.props.start.map((current, index, array) => (
@@ -78,14 +80,14 @@ export class MapContainer extends Component {
       <Marker 
         className={'marker'}
         key={index + 241242 + index} 
-        onClick={this.onMarkerClick.bind(this)}
+        onClick={this.props.clicked}
         //onMouseover={this.onMouseoverMarker}
         name={current.venue.name}
         title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
         }}
-        animation={this.state.showingactiveMarker ? '2' : '0'} />
+        animation={this.state.activeMarker ? (this.props.start.name === this.state.activeMarker.name ? '1' : '0') : '0'} />
         
       
       )) }
