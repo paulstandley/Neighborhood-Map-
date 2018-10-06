@@ -83,7 +83,7 @@ export class MapContainer extends Component {
         title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
-        }}// check if list is clicked then check mane and address   
+        }}// complex turrnary to check if list is clicked then check name and address and enpty return vales   
         animation={this.props.AppData.listActive ? ((array[index].venue.location.address === '') && array[index].venue.location.address !== this.props.AppData.listActiveTargetAddress || array[index].venue.name !== this.props.AppData.listActiveTargetName ? '0' : '1') : '0'} />
         
       
@@ -98,8 +98,8 @@ export class MapContainer extends Component {
         title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
-        }}
-        animation={this.props.AppData.listActive ? ((array[index].venue.location.address === '') || array[index].venue.location.address !== this.props.AppData.listActiveTargetAddress || array[index].venue.name !== this.props.AppData.listActiveTargetName ? '0' : '1') : '0'} />
+        }}// complex turrnary to check if list is clicked then check name and address and enpty return vales 
+        animation={this.props.AppData.listActive ? ((array[index].venue.location.address === '') && array[index].venue.location.address !== this.props.AppData.listActiveTargetAddress || array[index].venue.name !== this.props.AppData.listActiveTargetName ? '0' : '1') : '0'} />
         
       
       )) }
