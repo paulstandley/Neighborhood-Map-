@@ -67,7 +67,6 @@ class App extends Component {
       console.log(evt.name);//value for compare
       console.log(evt.title);
       console.log(evt.animation);
-      console.log(evt)
     }else{
     this.setState({ 
       listActiveTargetMarker: evt.currentTarget,
@@ -79,16 +78,15 @@ class App extends Component {
     console.log(`List Event`);
     console.log(evt);
     console.log(evt.target.innerText)//value for compare
-    console.log(evt.type)
-    console.log(evt.currentTarget)
     console.log(evt.currentTarget.childNodes[2].innerText)
-    console.log(Number(evt.currentTarget.id))
+    console.log(Number(evt.currentTarget.id))// compare with index no duplicates
     
     }
-    //console.log(evt.va.target.title)
+  
   };
 
   render() {
+    /*
     if(this.state.pick.response !== undefined) {
       console.log(this.state.pick);
     console.log(this.state.pick.response);
@@ -100,6 +98,7 @@ class App extends Component {
     console.log(this.state.pick.response.photos.items[0].suffix);
     console.log(this.state.pick.response.photos.items[1].suffix);
     }
+    */
     let filtered;
     if(this.state.query) {
       const match = new RegExp(escapeRegExp(this.state.query),'i');
