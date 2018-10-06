@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 import escapeRegExp from 'escape-string-regexp';
 import DataFile from './DataFile.json';
-import List from './List';
-import Map from './Map';
+import ListApp from './ListApp';
+import MapApp from './MapApp';
 import './App.css';
 
 // get four squre API display top 5
@@ -23,7 +23,10 @@ class App extends Component {
     foursquare: {},
     DATAFILE: DataFile.response.groups[0].items.sort(sortBy('venue.name')),
     query: '',
-    pick: {}
+    pick: {},
+    listActiveTargetMarker: {},
+    listActiveTargetName: {},
+    listActive: false
   }
 
   
@@ -57,6 +60,7 @@ class App extends Component {
   clicked = (evt) => {
     console.log(evt)
     if(evt.name !== undefined) {
+
       console.log(`Map Event`);
       console.log(evt);
       console.log(evt.name);//value for compare
@@ -64,7 +68,11 @@ class App extends Component {
       console.log(evt.animation);
       console.log(evt)
     }else{
-      
+    this.setState({ 
+      listActiveTargetMarker: evt.currentTarget,
+      listActiveTargetName: evt.target.innerText,
+      listActive: true
+     })
     console.log(`List Event`);
     console.log(evt);
     console.log(evt.target.innerText)//value for compare
@@ -116,10 +124,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List venue={filtered} pick={this.state.pick} clicked={this.clicked} />
+              <ListApp venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
             </section>
             <section id="sectionMap" className="section-map">
-              <Map venue={filtered} clicked={this.clicked} />
+              <MapApp venue={filtered} clicked={this.clicked} AppData={this.state} />
             </section>
           </main>
           
@@ -141,10 +149,10 @@ class App extends Component {
               placeholder="Filter places by name"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <List start={DataFile.response.groups[0].items} clicked={this.clicked} />
+              <ListApp start={DataFile.response.groups[0].items} clicked={this.clicked} AppData={this.state} />
             </section>
             <section id="sectionMap" className="section-map">
-              <Map start={DataFile.response.groups[0].items} clicked={this.clicked} />
+              <MapApp start={DataFile.response.groups[0].items} clicked={this.clicked} AppData={this.state} />
             </section>
           </main>
           

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './index.css';
 import "./App.css";
 
-class List extends Component {
+class ListApp extends Component {
   
   render() {
    
     return ( 
       <div>
-        <h2>LIST PLACES</h2>
+        <h2>OLDHAM</h2>
         <div>
           <ol>
             {this.props.venue !== undefined ? 
@@ -45,4 +45,4 @@ class List extends Component {
   }
 }
  
-export default List;
+export default ListApp;

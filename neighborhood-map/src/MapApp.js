@@ -57,7 +57,11 @@ export class MapContainer extends Component {
   }
   */
   render() {
-     
+    console.dir(this.props);
+    if(this.props.AppData !== undefined) {
+      console.dir(this.props.AppData.listActiveTargetMarker);
+      console.log(this.props.AppData.listActiveTargetName);
+    } 
     return (
       <Map google={this.props.google} 
         className={'map'}
@@ -80,7 +84,7 @@ export class MapContainer extends Component {
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
         }} 
-        animation={this.state.activeMarker ? (this.props.venue.name !== this.state.activeMarker.name ? '1' : '0') : '0'} />
+        animation={this.props.AppData.listActive ? (array[index].venue.name !== this.props.AppData.listActiveTargetName ? '0' : '1') : '0'} />
         
       
       )) : this.props.start.map((current, index, array) => (
@@ -95,7 +99,7 @@ export class MapContainer extends Component {
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
         }}
-        animation={this.state.activeMarker ? (this.props.start.name !== this.state.activeMarker.name ? '1' : '0') : '0'} />
+        animation={this.props.AppData.listActive ? (array[index].venue.name !== this.props.AppData.listActiveTargetName ? '0' : '1') : '0'} />
         
       
       )) }
