@@ -51,6 +51,7 @@ export class MapContainer extends Component {
     console.log(evt);
     animation={activeMarker ? (item.name === activeMarker.title ? '1' : '0') : '0'}
   }
+  animation={this.props.AppData.listActive ? this.props.AppData.listActiveTargetAddress.title === undefined && ((array[index].venue.location.address === this.props.AppData.listActiveTargetAddress && (array[index].venue.name === this.props.AppData.listActiveTargetName)) ? '1' : '0') : '0'} />
 
   onMouseoverMarker = (props, marker, evt) => {
     console.log(evt);
@@ -58,10 +59,7 @@ export class MapContainer extends Component {
   */
   render() {
     console.dir(this.props);
-    if(this.props.AppData !== undefined) {
-      console.dir(this.props.AppData.listActiveTargetMarker);
-      console.log(this.props.AppData.listActiveTargetAddress.length);
-    } 
+    
     return (
       <Map google={this.props.google} 
         className={'map'}
@@ -83,8 +81,8 @@ export class MapContainer extends Component {
         title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
-        }}// complex turrnary to check if list is clicked then check name and address and enpty return vales   
-        animation={this.props.AppData.listActive ? ((array[index].venue.location.address === '') && array[index].venue.location.address !== this.props.AppData.listActiveTargetAddress || array[index].venue.name !== this.props.AppData.listActiveTargetName ? '0' : '1') : '0'} />
+        }}// if clicked test index against listTargetIndex  
+        animation={this.props.AppData.listActive ? (this.props.AppData.listTargetIndex === index ? '1' : '0') : '0'} />
         
       
       )) : this.props.start.map((current, index, array) => (
@@ -98,8 +96,8 @@ export class MapContainer extends Component {
         title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
-        }}// complex turrnary to check if list is clicked then check name and address and enpty return vales 
-        animation={this.props.AppData.listActive ? ((array[index].venue.location.address === '') && array[index].venue.location.address !== this.props.AppData.listActiveTargetAddress || array[index].venue.name !== this.props.AppData.listActiveTargetName ? '0' : '1') : '0'} />
+        }}// if clicked test index against listTargetIndex
+        animation={this.props.AppData.listActive ? (this.props.AppData.listTargetIndex === index ? '1' : '0') : '0'} />  
         
       
       )) }

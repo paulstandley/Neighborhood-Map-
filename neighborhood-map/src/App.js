@@ -73,7 +73,8 @@ class App extends Component {
       listActiveTargetMarker: evt.currentTarget,
       listActiveTargetAddress: evt.currentTarget.childNodes[2].innerText,
       listActiveTargetName: evt.currentTarget.childNodes[1].innerText,
-      listActive: true
+      listActive: true,
+      listTargetIndex: Number(evt.currentTarget.id)
      })
     console.log(`List Event`);
     console.log(evt);
@@ -81,8 +82,8 @@ class App extends Component {
     console.log(evt.type)
     console.log(evt.currentTarget)
     console.log(evt.currentTarget.childNodes[2].innerText)
-    console.log(evt.currentTarget)
-    console.log(evt.metaKey)
+    console.log(Number(evt.currentTarget.id))
+    
     }
     //console.log(evt.va.target.title)
   };
