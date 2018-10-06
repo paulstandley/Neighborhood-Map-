@@ -25,7 +25,7 @@ class App extends Component {
     query: '',
     pick: {},
     listActiveTargetMarker: {},
-    listActiveTargetName: {},
+    listActiveTargetAddress: {},
     listActive: false
   }
 
@@ -70,7 +70,7 @@ class App extends Component {
     }else{
     this.setState({ 
       listActiveTargetMarker: evt.currentTarget,
-      listActiveTargetName: evt.target.innerText,
+      listActiveTargetAddress: evt.target.innerText,
       listActive: true
      })
     console.log(`List Event`);

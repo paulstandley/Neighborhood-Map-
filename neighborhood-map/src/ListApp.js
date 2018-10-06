@@ -18,9 +18,8 @@ class ListApp extends Component {
               {current.venue !== undefined ? <span id={`listId_${index}`} onClick={this.props.clicked}>
              
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
-                
                 <h3>{current.venue.name}</h3>
-                
+                <h3>{array[index].venue.location.address}</h3>
               </span> : console.log(current.name)}
                 
               </li>
@@ -33,7 +32,7 @@ class ListApp extends Component {
             
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3>{current.venue.name}</h3>
-               
+                <h3>{array[index].venue.location.address}</h3>
               </span> : console.log(current.name)}
                 
               </li>
