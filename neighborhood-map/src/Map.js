@@ -19,6 +19,13 @@ export class MapContainer extends Component {
   };
 
   onMapClicked = (props) => {
+   
+    console.log(props.google.maps.Marker.Mb.setAnimation);
+    console.log(props);
+    console.log(props.children);
+    console.log(props.children[0]);
+    console.log(props.children[0].props);
+    console.log(props.children[0].props.name);//name ref on map child
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: true,
@@ -59,7 +66,7 @@ export class MapContainer extends Component {
           lat: 53.540203, lng: -2.117056 
         }}
         zoom={12}
-        onClick={() => this.onMapClicked} >
+        onClick={this.onMapClicked} >
  
       {this.props.venue !== undefined ? this.props.venue.map((current, index, array) => (
         
