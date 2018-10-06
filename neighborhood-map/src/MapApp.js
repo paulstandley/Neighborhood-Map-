@@ -60,7 +60,7 @@ export class MapContainer extends Component {
     console.dir(this.props);
     if(this.props.AppData !== undefined) {
       console.dir(this.props.AppData.listActiveTargetMarker);
-      console.log(this.props.AppData.listActiveTargetName);
+      console.log(this.props.AppData.listActiveTargetAddress.length);
     } 
     return (
       <Map google={this.props.google} 
@@ -83,8 +83,8 @@ export class MapContainer extends Component {
         title={array[index].venue.location.address}
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
-        }} 
-        animation={this.props.AppData.listActive ? (array[index].venue.location.address !== this.props.AppData.listActiveTargetAddress ? '0' : '1') : '0'} />
+        }}// check if list is clicked then check mane and address   
+        animation={this.props.AppData.listActive ? ((array[index].venue.location.address === '') && array[index].venue.location.address !== this.props.AppData.listActiveTargetAddress || array[index].venue.name !== this.props.AppData.listActiveTargetName ? '0' : '1') : '0'} />
         
       
       )) : this.props.start.map((current, index, array) => (
@@ -99,7 +99,7 @@ export class MapContainer extends Component {
         position={{
           lat: current.venue.location.lat, lng: current.venue.location.lng
         }}
-        animation={this.props.AppData.listActive ? (array[index].venue.location.address !== this.props.AppData.listActiveTargetAddress ? '0' : '1') : '0'} />
+        animation={this.props.AppData.listActive ? ((array[index].venue.location.address === '') || array[index].venue.location.address !== this.props.AppData.listActiveTargetAddress || array[index].venue.name !== this.props.AppData.listActiveTargetName ? '0' : '1') : '0'} />
         
       
       )) }

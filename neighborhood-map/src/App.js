@@ -26,6 +26,7 @@ class App extends Component {
     pick: {},
     listActiveTargetMarker: {},
     listActiveTargetAddress: {},
+    listActiveTargetName: {},
     listActive: false
   }
 
@@ -70,13 +71,16 @@ class App extends Component {
     }else{
     this.setState({ 
       listActiveTargetMarker: evt.currentTarget,
-      listActiveTargetAddress: evt.target.innerText,
+      listActiveTargetAddress: evt.currentTarget.childNodes[2].innerText,
+      listActiveTargetName: evt.currentTarget.childNodes[1].innerText,
       listActive: true
      })
     console.log(`List Event`);
     console.log(evt);
     console.log(evt.target.innerText)//value for compare
     console.log(evt.type)
+    console.log(evt.currentTarget)
+    console.log(evt.currentTarget.childNodes[2].innerText)
     console.log(evt.currentTarget)
     console.log(evt.metaKey)
     }
@@ -121,7 +125,7 @@ class App extends Component {
               aria-required="true"
               id="sectionInput" 
               className="section-input" 
-              placeholder="Filter places by name"
+              placeholder="Filter foursquare list"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
               <ListApp venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
@@ -146,7 +150,7 @@ class App extends Component {
               aria-required="true"
               id="sectionInput" 
               className="section-input" 
-              placeholder="Filter places by name"
+              placeholder="Filter foursquare list"
               value={this.state.query}
               onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
               <ListApp start={DataFile.response.groups[0].items} clicked={this.clicked} AppData={this.state} />
