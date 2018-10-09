@@ -47,10 +47,16 @@ yarn add prop-types
 npm install --save escape-string-regexp sort-by
 ```
 
-### google-maps-react
+### Google-maps-react
 
 ```BASH
 npm install --save google-maps-react
+```
+
+### React-modal
+
+```BASH
+npm install react-modal
 ```
 
 ---
@@ -59,13 +65,11 @@ _**[Goggle Fonts](https://fonts.google.com/?selection.family=Indie+Flower|Notabl
 
 **HTML**
 
-
 ```HTML
 <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Notable" rel="stylesheet">
 ```
 
 **CSS**
-
 
 ```CSS
 font-family: 'Indie Flower', cursive;
