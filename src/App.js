@@ -94,7 +94,7 @@ class App extends React.Component {
   afterOpenModal() {
     // references are now sync'd and can be accessed.
     this.subtitle.style.color = 'black';
-    this.subtitle.style.bgcolor = 'green';
+    this.subtitle.style.fontSize = '30px';
 
   }
 
@@ -167,89 +167,64 @@ class App extends React.Component {
     console.log(this.state.pick.response.photos.items[1].suffix);
     }
     */
-    let filtered = this.queryMethod();
-    if(filtered !== undefined) {
-      return (
-        <div className="App">
-          <header>
-            <h1>Neighborhood Map</h1>
-          </header>
-          <main id="mainPage" className="main-page">
-            <section id="sectionList" className="section-list">
-              <input type="text" 
-              aria-label="text"
-              aria-required="true"
-              id="sectionInput" 
-              className="section-input" 
-              placeholder="Filter foursquare list"
-              value={this.state.query}
-              onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <ListApp venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
-            </section>
-            <section id="sectionMap" className="section-map">
-              <MapApp venue={filtered} clicked={this.clicked} AppData={this.state} />
-            </section>
-          </main>
-          
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.clicked}
-          onRequestClose={this.closeModal}
-          style={modalStyles}
-          className="modal"
-          overlayClassName="overlay"
-          contentLabel="modal" >
-          <div className="divModal">
-          <h2 ref={subtitle => this.subtitle = subtitle}></h2>
-
-          <button onClick={this.closeModal}>close</button>
-          </div>
-        </Modal>
-        </div>
-      );
-    }else{
-      return (
-        <div className="App">
-          <header>
-          <h1>Neighborhood Map</h1>
-          </header>
-          <main id="mainPage" className="main-page">
-            <section id="sectionList" className="section-list">
-              <input type="text" 
-              aria-label="text"
-              aria-required="true"
-              id="sectionInput" 
-              className="section-input" 
-              placeholder="Filter foursquare list"
-              value={this.state.query}
-              onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-              <ListApp start={DataFile.response.groups[0].items} clicked={this.clicked} AppData={this.state} />
-            </section>
-            <section id="sectionMap" className="section-map">
-              <MapApp start={DataFile.response.groups[0].items} clicked={this.clicked} AppData={this.state} />
-            </section>
-          </main>
-          
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          style={modalStyles}
-          className="modal"
-          overlayClassName="overlay"
-          contentLabel="modal" >
-          <div className="divModal">
-          <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-          <button onClick={this.closeModal}>close</button>
+   let filtered = this.queryMethod();
     
-          </div>
-        </Modal>
-        </div>
-      )
-    }
+   return (
+     <div className="App">
+       <header>
+         <h1>Neighborhood Map</h1>
+       </header>
+       
+       {filtered !== undefined ? // display filtered list and map markers
+       <main id="mainPage" className="main-page">
+         <section id="sectionList" className="section-list">
+           <input type="text" 
+           aria-label="text"
+           aria-required="true"
+           id="sectionInput" 
+           className="section-input" 
+           placeholder="Filter foursquare list"
+           value={this.state.query}
+           onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
+           <ListApp venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
+         </section>
+         <section id="sectionMap" className="section-map">
+           <MapApp venue={filtered} clicked={this.clicked} AppData={this.state} />
+         </section>
+        </main>
+
+       :  // display start list and all markers
+       <main id="mainPage" className="main-page">
+         <section id="sectionList" className="section-list">
+           <input type="text" 
+           aria-label="text"
+           aria-required="true"
+           id="sectionInput" 
+           className="section-input" 
+           placeholder="Filter foursquare list"
+           value={this.state.query}
+           onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
+          <ListApp venue={this.state.DATAFILE} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
+          </section>
+        <section id="sectionMap" className="section-map">
+          <MapApp start={this.state.DATAFILE} clicked={this.clicked} AppData={this.state} />
+        </section>
+      </main>
+        
+      }       
+     
+     </div>
+   );
     
   }
 
 }
 
 export default App;
+
+
+
+    
+
+      
+    
