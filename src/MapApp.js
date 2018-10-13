@@ -76,6 +76,7 @@ export class MapContainer extends Component {
       this.props.venue.map((current, index, array) => (
         
       <Marker 
+        id={index}
         className={'marker'}
         key={index + 201203 + index} 
         onClick={this.props.clicked}
@@ -93,6 +94,7 @@ export class MapContainer extends Component {
       this.props.start.map((current, index, array) => (
         
       <Marker 
+        id={index}
         className={'marker'}
         key={index + 241242 + index} 
         onClick={this.props.clicked}

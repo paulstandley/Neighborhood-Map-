@@ -22,6 +22,7 @@ class App extends React.Component {
       listActiveTargetMarker: {},
       listActiveTargetAddress: {},
       listActiveTargetName: {},
+      listTargetIndex: null,
       listActive: false
     };
     this.updateQueryHandeler = this.updateQueryHandeler.bind(this);
@@ -75,9 +76,16 @@ class App extends React.Component {
   clicked = (evt) => {
     console.log(evt)
     if(evt.className === 'marker') {
-      
+    this.setState({
+      listActiveTargetName: evt.name,
+      listActiveTargetMarker: evt,
+      listActiveTargetAddress: evt.title,
+      listTargetIndex: Number(evt.id),
+      listActive: true
+    })  
       console.log(`Map Event`);
       console.log(evt);
+      console.log(evt.id)
       console.log(evt.name);//value for compare
       console.log(evt.title);
       console.log(evt.animation);

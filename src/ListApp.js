@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import './index.css';
-import "./App.css";
+import './App.css';
 
 class ListApp extends Component {
-  
-  state = {
-    listActive: true
-  }
-  
   
 // when you click on map marker should bounce and stop the other one :)   
   render() {
@@ -22,27 +17,29 @@ class ListApp extends Component {
             this.props.venue.map((current, index, array) => (
               <li key={index + 354352 + index} >
   
-              {current.venue !== undefined ? // make sure object is not undefined 
+              {this.props.AppData.listActive !== true ? // test for display
               <span id={`${index}`} onClick={this.props.clicked}>
              
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3><strong>{current.venue.name}</strong></h3>
                 <h3>{array[index].venue.location.address}</h3>
-              </span> : console.log(current.name)}
-                
+              </span> : // display changed 
+              console.log("filterd : " + index)}
+                <h1>Yo</h1>
               </li>
             ))
             : // display all list with JSON DATAFILE or foursquare
             this.props.start.map((current, index, array) => (
               <li key={index + 348734 + index}>
               
-              {current.venue !== undefined ? // make sure object is not undefined
+              {this.props.AppData.listActive !== true ? // test for display
               <span id={`${index}`} onClick={this.props.clicked}>
             
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3><strong>{current.venue.name}</strong></h3>
                 <h3>{array[index].venue.location.address}</h3>
-              </span> : console.log(current.name)}
+              </span> : // display changed use condisonal to get index then display that
+               console.log(this.props.AppData.listTargetIndex === index ? '1' : '0')}
                 
               </li>
             )) }
