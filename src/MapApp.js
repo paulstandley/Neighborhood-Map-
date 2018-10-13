@@ -59,6 +59,8 @@ export class MapContainer extends Component {
   */
   render() {
     console.dir(this.props);
+    console.dir(this.props.AppData);
+    console.dir(this.props.AppData.query);
     
     return (
       <Map google={this.props.google} 
@@ -70,7 +72,8 @@ export class MapContainer extends Component {
         zoom={12}
         onClick={this.onMapClicked} >
  
-      {this.props.venue !== undefined ? this.props.venue.map((current, index, array) => (
+      {this.props.AppData.query !== '' ? // dispaly filtered list and Marker
+      this.props.venue.map((current, index, array) => (
         
       <Marker 
         className={'marker'}
@@ -85,7 +88,9 @@ export class MapContainer extends Component {
         animation={this.props.AppData.listActive ? (this.props.AppData.listTargetIndex === index ? '1' : '0') : '0'} />
         
       
-      )) : this.props.start.map((current, index, array) => (
+      )) 
+      : // display start and all maerkers
+      this.props.AppData.foursquare.map((current, index, array) => (
         
       <Marker 
         className={'marker'}
