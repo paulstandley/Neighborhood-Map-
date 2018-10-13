@@ -8,18 +8,7 @@ import ListApp from './ListApp';
 import MapApp from './MapApp';
 import './App.css';
 
-const modalStyles = {
-  content : {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root');
+
 // get four squre API display 
 
 class App extends React.Component {
@@ -40,9 +29,7 @@ class App extends React.Component {
     };
     this.updateQueryHandeler = this.updateQueryHandeler.bind(this);
     this.clicked = this.clicked.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    
   }
 
   
@@ -59,6 +46,9 @@ class App extends React.Component {
     
     /* foursquare data for Oldham docs 
     <img src={`${this.props.pick.response.photos.items[0].prefix}${this.props.pick.response.photos.items[0].suffix}`}></img>
+
+    https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+
     https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch	https://www.npmjs.com/package/google-maps-react 
     https://foursquare.com/developers/explore#req=venues%2Fexplore%3Fnear%3DOldham */        
     fetch('https://api.foursquare.com/v2/venues/explore?near=Oldham&client_id=AZCVJUXLZ4L2HW1W5XXE5AQBHZVXFWFK3PASLVFJGL4BVRXH&client_secret=VP5GYXQT3E3IDSSOEV5BWCKIAUGLJ4D5RX3NU2B305NSDT0P&v=20180826')
@@ -84,32 +74,16 @@ class App extends React.Component {
 /* event handeler */  
   updateQueryHandeler = (query) => {
     this.setState({ query: query.trim()} );
-        
-  }
+    this.setState( {filtered: this.queryMethod()} );// filtred state is one click behind :-(
+  }    
+  
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = 'black';
-    this.subtitle.style.fontSize = '30px';
-
-  }
-
-  closeModal() {
-    this.setState({
-      modalIsOpen: false,
-      listActive: false
-    });
-  }
 
 /* model https://github.com/reactjs/react-modal and https://reactjs.org/community/model-management.html https://www.npmjs.com/package/react-modal-bootstrap https://codeburst.io/modals-in-react-f6c3ff9f4701 */
   clicked = (evt) => {
     console.log(evt)
     if(evt.className === 'marker') {
-      this.openModal();
+      //this.openModal();
       console.log(`Map Event`);
       console.log(evt);
       console.log(evt.name);//value for compare
@@ -123,7 +97,7 @@ class App extends React.Component {
       listActive: true,
       listTargetIndex: Number(evt.currentTarget.id)
      })
-     this.openModal();
+     //this.openModal();
     console.log(`List Event`);
     console.log(evt);
     console.log(evt.target.innerText)//value for compare
@@ -144,9 +118,10 @@ class App extends React.Component {
       DataFile.response.groups[0].items.sort(sortBy('venue.name'));
       //console.log(filtered[0].venue.name)
       //console.log(filtered[1].venue.id)
+       
     }
     else {
-      filtered = this.state.DataFile;
+      filtered = this.state.DATAFILE;
     }
     
     return filtered;
@@ -170,7 +145,7 @@ class App extends React.Component {
    let filtered = this.queryMethod();
     
    return (
-     <div className="App">
+     <div id="App" className="App">
        <header>
          <h1>Neighborhood Map</h1>
        </header>

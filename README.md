@@ -17,7 +17,7 @@ _Udacitys last project for the FEND Nano Degree Program_ _**[NanoDegrees](udacit
 **BASH**
 
 ```BASH
-cd Neighborhood-Map/neighborhood-map
+cd neighborhood-map
 npm start
 ```
 
@@ -33,6 +33,10 @@ PROJECT SPECIFICATION **Neighborhood Map (React)**
 ## **Dependencies**
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
+### Google Map Api
+
+You need an API key from **[Developers Console](https://console.developers.google.com)**.
 
 ### Prop Types
 

@@ -3,6 +3,9 @@ import Modal from 'react-modal';
 import './index.css';
 import "./App.css";
 
+// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement('#root');
+
 const modalStyles = {
   content : {
     top: '50%',
@@ -15,12 +18,16 @@ const modalStyles = {
 };
 
 class ListApp extends Component {
-  
-  state = {
-    modalIsOpen: false,
-    listActive: true
+  constructor() {
+    super();
+    this.state = {
+      modalIsOpen: false,
+      listActive: true
+    }
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
-  
   openModal() {
     this.setState({modalIsOpen: true});
   }
@@ -38,14 +45,14 @@ class ListApp extends Component {
       listActive: false
     });
   }
-// when you click on map marker should bounce and stop the other one :)   
+// when you click on map marker should bounce and stop the other one :) cd   
   render() {
    console.log(this.props.AppData)
     return ( 
       <div>
         <Modal
           isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.clicked}
+          onAfterOpen={this.props.clicked}
           onRequestClose={this.closeModal}
           style={modalStyles}
           className="modal"
@@ -75,7 +82,7 @@ class ListApp extends Component {
               </li>
             ))
             : // display all list with JSON DATAFILE or foursquare
-            this.props.foursquare.map((current, index, array) => (
+            this.props.DATAFILE.map((current, index, array) => (
               <li key={index + 348734 + index}>
               
               {current.venue !== undefined ? // make sure object is not undefined
