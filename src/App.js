@@ -2,24 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 import escapeRegExp from 'escape-string-regexp';
-import Modal from 'react-modal';
 import DataFile from './DataFile.json';
 import ListApp from './ListApp';
 import MapApp from './MapApp';
 import './App.css';
 
-const modalStyles = {
-  content : {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root');
 // get four squre API display 
 
 class App extends React.Component {
@@ -35,14 +22,10 @@ class App extends React.Component {
       listActiveTargetMarker: {},
       listActiveTargetAddress: {},
       listActiveTargetName: {},
-      listActive: false,
-      modalIsOpen: false
+      listActive: false
     };
     this.updateQueryHandeler = this.updateQueryHandeler.bind(this);
     this.clicked = this.clicked.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
 
   
@@ -87,29 +70,12 @@ class App extends React.Component {
         
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = 'black';
-    this.subtitle.style.fontSize = '30px';
-
-  }
-
-  closeModal() {
-    this.setState({
-      modalIsOpen: false,
-      listActive: false
-    });
-  }
 
 /* model https://github.com/reactjs/react-modal and https://reactjs.org/community/model-management.html https://www.npmjs.com/package/react-modal-bootstrap https://codeburst.io/modals-in-react-f6c3ff9f4701 */
   clicked = (evt) => {
     console.log(evt)
     if(evt.className === 'marker') {
-      this.openModal();
+      
       console.log(`Map Event`);
       console.log(evt);
       console.log(evt.name);//value for compare
@@ -123,7 +89,7 @@ class App extends React.Component {
       listActive: true,
       listTargetIndex: Number(evt.currentTarget.id)
      })
-     this.openModal();
+     
     console.log(`List Event`);
     console.log(evt);
     console.log(evt.target.innerText)//value for compare
@@ -186,10 +152,10 @@ class App extends React.Component {
            placeholder="Filter foursquare list"
            value={this.state.query}
            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-           <ListApp venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
+           <ListApp start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
          </section>
          <section id="sectionMap" className="section-map">
-           <MapApp venue={filtered} clicked={this.clicked} AppData={this.state} />
+           <MapApp start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
          </section>
         </main>
 
@@ -204,10 +170,10 @@ class App extends React.Component {
            placeholder="Filter foursquare list"
            value={this.state.query}
            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-          <ListApp venue={this.state.DATAFILE} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
+          <ListApp start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
           </section>
         <section id="sectionMap" className="section-map">
-          <MapApp start={this.state.DATAFILE} clicked={this.clicked} AppData={this.state} />
+          <MapApp start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
         </section>
       </main>
         

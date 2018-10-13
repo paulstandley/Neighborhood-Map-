@@ -90,7 +90,7 @@ export class MapContainer extends Component {
       
       )) 
       : // display start and all maerkers
-      this.props.AppData.foursquare.map((current, index, array) => (
+      this.props.start.map((current, index, array) => (
         
       <Marker 
         className={'marker'}
