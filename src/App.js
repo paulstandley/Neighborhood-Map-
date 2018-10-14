@@ -56,13 +56,8 @@ class App extends React.Component {
   }
 
   componentWillUpdate() {
-    /*
-    fetch('https://api.foursquare.com/v2/venues/4c38697d0a71c9b6298e40c9/photos?client_id=AZCVJUXLZ4L2HW1W5XXE5AQBHZVXFWFK3PASLVFJGL4BVRXH&client_secret=VP5GYXQT3E3IDSSOEV5BWCKIAUGLJ4D5RX3NU2B305NSDT0P&v=20180826').then((response) => {
-      return response.json();
-    }).then((pick) => {
-      this.setState({pick})
-    })
-    */
+ 
+
   }
 
 /* event handeler */  
@@ -78,6 +73,8 @@ class App extends React.Component {
 /* model https://github.com/reactjs/react-modal and https://reactjs.org/community/model-management.html https://www.npmjs.com/package/react-modal-bootstrap https://codeburst.io/modals-in-react-f6c3ff9f4701 */
   clicked = (evt) => {
     console.log(evt)
+    console.log(this.state.listTargetIndex);
+    
     if(evt.className === 'marker') {
     this.setState({
       listActiveTargetName: evt.name,
@@ -92,20 +89,50 @@ class App extends React.Component {
       console.log(evt.name);//value for compare
       console.log(evt.title);
       console.log(evt.animation);
+      if(this.state.listTargetIndex !== null) {
+        let num0 = this.state.listTargetIndex;
+        console.log(num0)
+        let picked0 = this.state.DATAFILE[num0].venue.id;
+        console.log(picked0);
+         
+        fetch(`https://api.foursquare.com/v2/venues/${picked0}/photos?client_id=AZCVJUXLZ4L2HW1W5XXE5AQBHZVXFWFK3PASLVFJGL4BVRXH&client_secret=VP5GYXQT3E3IDSSOEV5BWCKIAUGLJ4D5RX3NU2B305NSDT0P&v=20180826`).then((response) => {
+        return response.json();
+      }).then((pick) => {
+        this.setState({pick})
+      })
+      }
+// list display
     }else{
-    this.setState({ 
-      listActiveTargetMarker: evt.currentTarget,
-      listActiveTargetAddress: evt.currentTarget.childNodes[2].innerText,
-      listActiveTargetName: evt.currentTarget.childNodes[1].innerText,
-      listActive: true,
-      listTargetIndex: Number(evt.currentTarget.id)
-     })
+    
+    if(evt !== undefined) {
+
+      this.setState({ 
+        listActiveTargetMarker: evt.currentTarget,
+        listActiveTargetAddress: evt.currentTarget.childNodes[2].innerText,
+        listActiveTargetName: evt.currentTarget.childNodes[1].innerText,
+        listActive: true,
+        listTargetIndex: Number(evt.currentTarget.id)
+       })
+       
+      console.log(`List Event`);
+      console.log(evt);
+      console.log(evt.target.innerText)//value for compare
+      console.log(evt.currentTarget.childNodes[2].innerText)
+      console.log(Number(evt.currentTarget.id))// compare with index no duplicates
+      console.log(this.state.listTargetIndex)
+
+      let num1 = Number(evt.currentTarget.id);
+      console.log(num1);
+      let picked1 = this.state.DATAFILE[num1].venue.id;
+      console.log(picked1);
      
-    console.log(`List Event`);
-    console.log(evt);
-    console.log(evt.target.innerText)//value for compare
-    console.log(evt.currentTarget.childNodes[2].innerText)
-    console.log(Number(evt.currentTarget.id))// compare with index no duplicates
+      fetch(`https://api.foursquare.com/v2/venues/${picked1}/photos?client_id=AZCVJUXLZ4L2HW1W5XXE5AQBHZVXFWFK3PASLVFJGL4BVRXH&client_secret=VP5GYXQT3E3IDSSOEV5BWCKIAUGLJ4D5RX3NU2B305NSDT0P&v=20180826`).then((response) => {
+      return response.json();
+    }).then((pick) => {
+      this.setState({pick})
+    })
+    
+  }
     }
 
   };

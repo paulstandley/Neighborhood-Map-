@@ -23,7 +23,7 @@ class ListApp extends Component {
              
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3><strong>{current.venue.name}</strong></h3>
-                <h3>{array[index].venue.location.address}</h3>
+                
               </span> : index === this.props.AppData.listTargetIndex ? // dispaly clicked 
               <DispalyClicked listInfo={this.props}/>
                : ''}
@@ -39,7 +39,7 @@ class ListApp extends Component {
             
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3><strong>{current.venue.name}</strong></h3>
-                <h3>{array[index].venue.location.address}</h3>
+                
               </span> : index === this.props.AppData.listTargetIndex ? // display clicked
               <DispalyClicked listInfo={this.props} />
                : ''}
