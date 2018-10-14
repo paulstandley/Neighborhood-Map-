@@ -89,6 +89,12 @@ strong {
   margin: 0;
 }
 
+.dispalyClicked {
+  background-color: cadetblue;
+}
+
+/* map */
+
 .map {
   height: 300px;
 }
@@ -181,6 +187,12 @@ strong {
     padding: 0;
     margin: 0;
   }
+
+  .dispalyClicked {
+    background-color: cadetblue;
+  }
+
+/* map  */
 
   .map {
     top: 11.2%;

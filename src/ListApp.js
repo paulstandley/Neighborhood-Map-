@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DispalyClicked from './DispalyClicked'
 import './index.css';
 import './App.css';
 
@@ -24,10 +25,7 @@ class ListApp extends Component {
                 <h3><strong>{current.venue.name}</strong></h3>
                 <h3>{array[index].venue.location.address}</h3>
               </span> : index === this.props.AppData.listTargetIndex ? // dispaly clicked 
-              <div>
-                <h1>Hello world at {index} </h1>
-                <button onClick={this.props.closeList} >close</button>
-              </div>
+              <DispalyClicked listInfo={this.props}/>
                : ''}
                 
               </li>
@@ -43,10 +41,7 @@ class ListApp extends Component {
                 <h3><strong>{current.venue.name}</strong></h3>
                 <h3>{array[index].venue.location.address}</h3>
               </span> : index === this.props.AppData.listTargetIndex ? // display clicked
-              <div>
-                <h1>Hello world at {index} </h1>
-                <button onClick={this.props.closeList} >close</button>
-              </div>
+              <DispalyClicked listInfo={this.props} />
                : ''}
                 
               </li>
