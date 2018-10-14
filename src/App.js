@@ -23,7 +23,7 @@ class App extends React.Component {
       listActiveTargetAddress: {},
       listActiveTargetName: {},
       listTargetIndex: null,
-      listActive: false
+      listActive: false,
     };
     this.updateQueryHandeler = this.updateQueryHandeler.bind(this);
     this.clicked = this.clicked.bind(this);
@@ -71,6 +71,9 @@ class App extends React.Component {
         
   }
 
+  closeList = (evt) => {
+    this.setState({ listActive: false });
+  }
 
 /* model https://github.com/reactjs/react-modal and https://reactjs.org/community/model-management.html https://www.npmjs.com/package/react-modal-bootstrap https://codeburst.io/modals-in-react-f6c3ff9f4701 */
   clicked = (evt) => {
@@ -110,6 +113,7 @@ class App extends React.Component {
   queryMethod() {
     let filtered;
     if (this.state.query) {
+      
       const match = new RegExp(escapeRegExp(this.state.query), 'i');
       //filtered = this.state.venue.filter((places) => match.test(places.name));
       filtered = this.state.foursquare.filter((value) => match.test(value.venue.name));
@@ -160,10 +164,10 @@ class App extends React.Component {
            placeholder="Filter foursquare list"
            value={this.state.query}
            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-           <ListApp start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
+           <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
          </section>
          <section id="sectionMap" className="section-map">
-           <MapApp start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
+           <MapApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
          </section>
         </main>
 
@@ -178,10 +182,10 @@ class App extends React.Component {
            placeholder="Filter foursquare list"
            value={this.state.query}
            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
-          <ListApp start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
+          <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
           </section>
         <section id="sectionMap" className="section-map">
-          <MapApp start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
+          <MapApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
         </section>
       </main>
         

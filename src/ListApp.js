@@ -23,9 +23,13 @@ class ListApp extends Component {
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3><strong>{current.venue.name}</strong></h3>
                 <h3>{array[index].venue.location.address}</h3>
-              </span> : // display changed 
-              console.log("filterd : " + index)}
-                <h1>Yo</h1>
+              </span> : index === this.props.AppData.listTargetIndex ? // dispaly clicked 
+              <div>
+                <h1>Hello world at {index} </h1>
+                <button onClick={this.props.closeList} >close</button>
+              </div>
+               : ''}
+                
               </li>
             ))
             : // display all list with JSON DATAFILE or foursquare
@@ -38,8 +42,12 @@ class ListApp extends Component {
                 <img src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
                 <h3><strong>{current.venue.name}</strong></h3>
                 <h3>{array[index].venue.location.address}</h3>
-              </span> : // display changed use condisonal to get index then display that
-               console.log(this.props.AppData.listTargetIndex === index ? '1' : '0')}
+              </span> : index === this.props.AppData.listTargetIndex ? // display clicked
+              <div>
+                <h1>Hello world at {index} </h1>
+                <button onClick={this.props.closeList} >close</button>
+              </div>
+               : ''}
                 
               </li>
             )) }
