@@ -53,6 +53,12 @@ npm install --save escape-string-regexp sort-by
 npm install --save google-maps-react
 ```
 
+### Sw-precache
+
+```BASH
+ npm install --save-dev sw-precache
+```
+
 ---
 
 _**[Goggle Fonts](https://fonts.google.com/?selection.family=Indie+Flower|Notable)**_

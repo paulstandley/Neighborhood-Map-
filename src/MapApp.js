@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import './index.css';
 import './App.css';
 
@@ -64,6 +64,7 @@ export class MapContainer extends Component {
     
     return (
       <Map google={this.props.google} 
+
         className={'map'}
         style={style}
         initialCenter={{

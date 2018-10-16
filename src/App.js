@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 import escapeRegExp from 'escape-string-regexp';
-import DataFile from './DataFile.json';
+import DataFile from './assets/DataFile.json';
 import ListApp from './ListApp';
 import MapApp from './MapApp';
 import './App.css';
@@ -31,6 +31,8 @@ class App extends React.Component {
 
   
   /*
+https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
+  
   static propTypes = {
     foursquare: propTypes.object.isRequired,
     updateQueryHandeler: propTypes.func.isRequired,
@@ -99,7 +101,7 @@ class App extends React.Component {
         return response.json();
       }).then((pick) => {
         this.setState({pick})
-      })
+      }).catch(error => console.error('Error:', error));
       }
 // list display
     }else{
@@ -130,7 +132,7 @@ class App extends React.Component {
       return response.json();
     }).then((pick) => {
       this.setState({pick})
-    })
+    }).catch(error => console.error('Error:', error));
     
   }
     }
@@ -193,7 +195,7 @@ class App extends React.Component {
            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
            <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
          </section>
-         <section id="sectionMap" className="section-map">
+         <section id="sectionMap" className="section-map" aria-role="map">
            <MapApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
          </section>
         </main>
@@ -211,7 +213,7 @@ class App extends React.Component {
            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
           <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
           </section>
-        <section id="sectionMap" className="section-map">
+        <section id="sectionMap" className="section-map" aria-role="map">
           <MapApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
         </section>
       </main>
