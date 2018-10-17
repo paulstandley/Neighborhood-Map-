@@ -69,7 +69,14 @@ https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
   }
 
   closeList = (evt) => {
-    this.setState({ listActive: false });
+    this.setState({ 
+      pick: {},
+      listActiveTargetMarker: {},
+      listActiveTargetAddress: {},
+      listActiveTargetName: {},
+      listTargetIndex: null,
+      listActive: false,
+    });
   }
 
 /* model https://github.com/reactjs/react-modal and https://reactjs.org/community/model-management.html https://www.npmjs.com/package/react-modal-bootstrap https://codeburst.io/modals-in-react-f6c3ff9f4701 */

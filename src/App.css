@@ -65,7 +65,6 @@ strong {
 
 .section-list li:hover {
   background-color: hsl(203, 94%, 80%);
-  border: 0.18em solid darkgray;
   list-style: none;
   display: inline-block;
   padding: 0;
@@ -205,7 +204,6 @@ strong {
 
   .section-list li:hover {
     background-color: hsl(203, 94%, 80%);
-    border: 0.25em ridge darkgray;
     list-style: none;
     font-size: 1rem;
     display: inline-block;
@@ -263,9 +261,15 @@ strong {
     top: 11.2%;
     left: 41.2%;
   }
+
+  #sectionMap > div {
+    top: 11%;
+    left: 41.2%;
+    right: 0%;
+    bottom: 0%;
+  }
   
   #sectionMap > div > div.map {
-    
     top: 11%;
     left: 41.2%;
     right: 0%;
@@ -276,8 +280,5 @@ strong {
     width: 82.2vmax !important;
     height: 100% !important;
   }
-  
-  #sectionMap {
-    width:  100%;
-  }
+
 }
