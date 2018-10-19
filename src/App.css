@@ -107,6 +107,47 @@ strong {
   background-color: hsl(30, 13%, 91%);
 }
 
+/* dispalyClicked */
+
+#sectionList > div > div > ol > li > div {
+  position: absolute;
+  top: 18%;
+  left: 0%;
+  right: 0%;
+  bottom: 60%;
+  text-align: center;
+}
+#pickId {
+  padding: 3%;
+  width: 16vmax;
+  height: 16vmax;
+}
+
+button:hover {
+  font-size: 1.2rem;
+  font-weight: 700;
+  position: absolute;
+  padding: 1.1em;
+  top: 64%;
+  left: 2%;
+  bottom: 50%;
+  border-radius: 3em;
+  background-color: hsl(240, 40%, 60%);
+  color: white;
+}
+
+button {
+  font-size: 1rem;
+  font-weight: 500;
+  position: absolute;
+  padding: 1em;
+  top: 64%;
+  left: 10%;
+  bottom: 26%;
+  border-radius: 33em;
+  border: 0.5em ridge hsl(240, 40%, 60%);
+}
+
 /* map */
 
 .map {
@@ -212,7 +253,7 @@ strong {
     font-size: 2rem;
     color: hsl(240, 40%, 60%);
     text-shadow: 0.1rem 0.1rem grey, 0.1rem 0.2rem darkgray, 0.3rem 0.4rem black;
-    padding: 0;
+    padding: 0 1em;
     margin: 0;
   }
 
@@ -227,7 +268,9 @@ strong {
     bottom: 0%;
   }
   #pickId {
-    padding: 5% 0% 3% 27%;
+    padding: 0.8em;
+    width: 15vmax;
+    height: 15vmax;
   }
 
   button:hover {
@@ -236,7 +279,7 @@ strong {
     position: absolute;
     padding: 1.1em;
     top: 64%;
-    left: 38%;
+    left: 41%;
     bottom: 26%;
     border-radius: 3em;
     background-color: hsl(240, 40%, 60%);
@@ -249,7 +292,7 @@ strong {
     position: absolute;
     padding: 1em;
     top: 64%;
-    left: 40%;
+    left: 43%;
     bottom: 26%;
     border-radius: 33em;
     border: 0.5em ridge hsl(240, 40%, 60%);
