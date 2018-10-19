@@ -7,7 +7,20 @@ import ListApp from './ListApp';
 import MapApp from './MapApp';
 import './App.css';
 
-// get four squre API display 
+/*
+# __TODO LIST__
+* change id on li list or map markes to make ids unic 
+* sort out css for API fecth display
+* set map back to desktop css 
+* sort out moblie css
+* sw ? README : do one
+* sort out aria role
+* a11y clean up
+* make Error handeler
+* clean up console.log dir
+* change classes with no state to functions
+* make sure README and comments clear and understandable 
+*/
 
 class App extends React.Component {
 
@@ -27,6 +40,7 @@ class App extends React.Component {
     };
     this.updateQueryHandeler = this.updateQueryHandeler.bind(this);
     this.clicked = this.clicked.bind(this);
+    this.closeList = this.closeList.bind(this);
   }
 
   
@@ -202,7 +216,7 @@ https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
            <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
          </section>
-         <section id="sectionMap" className="section-map" aria-role="map">
+         <section id="sectionMap" className="section-map">
            <MapApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
          </section>
         </main>
@@ -220,7 +234,7 @@ https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
           <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
           </section>
-        <section id="sectionMap" className="section-map" aria-role="map">
+        <section id="sectionMap" className="section-map">
           <MapApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
         </section>
       </main>

@@ -68,7 +68,7 @@ export class MapContainer extends Component {
         className={'map'}
         style={style}
         initialCenter={{
-          lat: 53.540203, lng: -2.117056 
+          lat: 53.540203, lng: -2.102056 
         }}
         zoom={12}
         onClick={this.onMapClicked} >
@@ -88,8 +88,7 @@ export class MapContainer extends Component {
           lat: current.venue.location.lat, lng: current.venue.location.lng
         }}// if clicked test index against listTargetIndex  
         animation={this.props.AppData.listActive ? (this.props.AppData.listTargetIndex === index ? '1' : '0') : '0'} />
-        
-      
+  
       )) 
       : // display start and all maerkers
       this.props.start.map((current, index, array) => (

@@ -18,7 +18,7 @@ class ListApp extends Component {
             this.props.venue.map((current, index, array) => (
               <li key={index + 354352 + index} >
   
-              {this.props.AppData.listActive !== true ? // test for display
+              {this.props.AppData.listActive !== true ? /* test for display. the h5 is not displayed but placed here to bind the text values to the object for use in displayed click */
               <span id={`${index}`} onClick={this.props.clicked}>
              
                 <img className="icon" src="https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png" alt="planet" width="16" height="16"></img>
