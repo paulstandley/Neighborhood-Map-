@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DispalyClicked from './DispalyClicked'
+import DispalyClicked from './DispalyClicked';
 import './index.css';
 import './App.css';
 
@@ -25,7 +25,7 @@ class ListApp extends Component {
                 <h3><strong>{current.venue.name}</strong></h3>
                 <h5>{array[index].venue.location.address}</h5>
               </span> : index === this.props.AppData.listTargetIndex ? // dispaly clicked 
-              <DispalyClicked listInfo={this.props}/>
+              <DispalyClicked listInfo={this.props} />
                : ''}
                 
               </li>

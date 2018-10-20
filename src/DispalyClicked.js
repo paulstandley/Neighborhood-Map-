@@ -7,14 +7,17 @@ class DispalyClicked extends Component {
     console.log(this.props);
     console.log(this.props.listInfo);
     console.log(this.props.listInfo.pick);
+    console.log(this.props.listInfo.venue === undefined);
+    
     if(this.props.listInfo.pick.meta !== undefined) {
       console.log(this.props.listInfo.pick.meta.code);
       if(this.props.listInfo.pick.response.photos.items[0] !== undefined) {
         console.log(this.props.listInfo.pick.response.photos.items[0]);
-    
+
+
         var prefix0 = this.props.listInfo.pick.response.photos.items[0].prefix;
         var suffix0 = this.props.listInfo.pick.response.photos.items[0].suffix;
-        var size0 =  this.props.listInfo.pick.response.photos.items[0].width;
+        var size0 = this.props.listInfo.pick.response.photos.items[0].width;
         var img0;
         if(this.props.listInfo.AppData.listActiveTargetAddress === undefined) {
         img0 = <span className="topList">

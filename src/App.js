@@ -9,8 +9,7 @@ import './App.css';
 
 /*
 # __TODO LIST__
-* change id on li list or map markes to make ids unic 
-* sort out css for API fecth display
+* sort out css for API fecth display :)
 * set map back to desktop css 
 * sort out moblie css
 * sw ? README : do one
@@ -173,10 +172,11 @@ https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
       //console.log(filtered[0].venue.name)
       //console.log(filtered[1].venue.id)
     }
+
     else {
       filtered = this.state.DataFile;
     }
-    
+    console.log(this.state.filtered)
     return filtered;
 
   }
@@ -196,6 +196,7 @@ https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
     }
     */
    let filtered = this.queryMethod();
+   
     
    return (
      <div className="App">
@@ -206,14 +207,17 @@ https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
        {filtered !== undefined ? // display filtered list and map markers
        <main id="mainPage" className="main-page">
          <section id="sectionList" className="section-list">
-           <input type="text" 
-           aria-label="text"
-           aria-required="true"
-           id="sectionInput" 
-           className="section-input" 
-           placeholder="Filter foursquare list"
-           value={this.state.query}
-           onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
+         {this.state.listActive === false ? 
+            <input type="text" 
+            aria-label="text"
+            aria-required="true"
+            id="sectionInput" 
+            className="section-input" 
+            placeholder="Filter foursquare list"
+            value={this.state.query}
+            onChange={(event) => this.updateQueryHandeler(event.target.value)}/> 
+          : ''}
+           
            <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
          </section>
          <section id="sectionMap" className="section-map">
@@ -224,14 +228,16 @@ https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
        :  // display start list and all markers
        <main id="mainPage" className="main-page">
          <section id="sectionList" className="section-list">
-           <input type="text" 
-           aria-label="text"
-           aria-required="true"
-           id="sectionInput" 
-           className="section-input" 
-           placeholder="Filter foursquare list"
-           value={this.state.query}
-           onChange={(event) => this.updateQueryHandeler(event.target.value)}/>
+          {this.state.listActive === false ? 
+            <input type="text" 
+            aria-label="text"
+            aria-required="true"
+            id="sectionInput" 
+            className="section-input" 
+            placeholder="Filter foursquare list"
+            value={this.state.query}
+            onChange={(event) => this.updateQueryHandeler(event.target.value)}/> 
+          : ''}
           <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
           </section>
         <section id="sectionMap" className="section-map">

@@ -1,5 +1,9 @@
 /* Mobile css */
-.App {
+* {
+  padding: 0;
+}
+
+.App::after {
   margin: 0;
   padding: 0;
   font-family: 'Indie Flower', cursive;
@@ -7,12 +11,14 @@
 
 .main-page {
   background-color: hsl(30, 13%, 91%);
+  padding: 0;
 }
-
+/* header */
 header {
   background-color: hsl(30, 13%, 91%);
-  padding: 1.2em;
-  margin: 0.2em;
+  width: 100%;
+  padding: 1em;
+  margin: 0;
   border: 0.1em ridge gray;
 }
 
@@ -32,7 +38,6 @@ ol {
 
 strong {
   font-size: 1.1rem;
-  text-shadow: 0.1rem 0.11rem grey, 0.12rem 0.13rem darkgray;
   padding: 0;
   margin: 0;
 }
@@ -87,26 +92,6 @@ strong {
   margin: 0;
 }
 
- /* dispalyClicked */
-
-.section-list .dispalyClicked .topList {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  right: 0%;
-  bottom: 50%;
-  background-color: hsl(30, 13%, 91%);
-}
-
-.section-list .dispalyClicked {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 59%;
-  bottom: 0;
-  background-color: hsl(30, 13%, 91%);
-}
-
 /* dispalyClicked */
 
 #sectionList > div > div > ol > li > div {
@@ -124,26 +109,26 @@ strong {
 }
 
 button:hover {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 500;
   position: absolute;
-  padding: 1.1em;
+  padding: 1em;
   top: 64%;
-  left: 2%;
-  bottom: 50%;
+  left: 8%;
+  bottom: 24%;
   border-radius: 3em;
   background-color: hsl(240, 40%, 60%);
   color: white;
 }
 
 button {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 300;
   position: absolute;
-  padding: 1em;
+  padding: 0.8em;
   top: 64%;
   left: 10%;
-  bottom: 26%;
+  bottom: 24%;
   border-radius: 33em;
   border: 0.5em ridge hsl(240, 40%, 60%);
 }
@@ -151,9 +136,18 @@ button {
 /* map */
 
 .map {
-  height: 300px;
+  padding: 0;
 }
 
+#sectionMap > div > div.map > div > div > div > div > div {
+  width: 100vmax;
+  height: 100vmax;
+}
+
+#sectionMap > div > div.map > div > div > div > iframe {
+  width: 100vmax;
+  height: 50vmax;
+}
 #sectionMap > div > div.map {
   position: fixed;
   top: 50%;
@@ -203,7 +197,6 @@ button {
   
   strong {
     font-size: 1.3rem;
-    text-shadow: 0.1rem 0.11rem grey, 0.12rem 0.13rem darkgray;
     padding: 0;
     margin: 0;
   }
@@ -266,9 +259,10 @@ button {
     left: 0%;
     right: 60%;
     bottom: 0%;
+    padding: 1em;
   }
   #pickId {
-    padding: 0.8em;
+    padding: 1.4em;
     width: 15vmax;
     height: 15vmax;
   }
@@ -278,7 +272,7 @@ button {
     font-weight: 700;
     position: absolute;
     padding: 1.1em;
-    top: 64%;
+    top: 76%;
     left: 41%;
     bottom: 26%;
     border-radius: 3em;
@@ -291,7 +285,7 @@ button {
     font-weight: 500;
     position: absolute;
     padding: 1em;
-    top: 64%;
+    top: 76%;
     left: 43%;
     bottom: 26%;
     border-radius: 33em;
