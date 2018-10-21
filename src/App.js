@@ -9,10 +9,10 @@ import './App.css';
 
 /*
 # __TODO LIST__
-* map click lost ref important!
+* map click lost ref important! :)
 * sort out css for API fecth display :)
-* set map back to desktop css 
-* sort out moblie css
+* set map back to desktop css :)
+* sort out moblie css add meaid
 * sw ? README : do one
 * sort out aria role
 * a11y clean up
