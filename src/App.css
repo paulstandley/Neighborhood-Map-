@@ -36,7 +36,9 @@ header > h1 {
   padding: 0;
   margin: 0;
 }
+
 /* section List */
+
 ol {
   padding: 0;
 }
@@ -119,8 +121,8 @@ strong {
 
 #pickId {
   padding: 3%;
-  width: 16vmax;
-  height: 16vmax;
+  width: 20vmax;
+  height: 20vmax;
 }
 
 /* close button */
@@ -130,9 +132,9 @@ button {
   font-weight: 300;
   position: absolute;
   padding: 0.4em;  
-  top: 65%;
-  left: 4%;
-  bottom: 20%;
+  top: 52%;
+  left: 3%;
+  bottom: 18%;
   border-radius: 33em;
   border: 0.5em ridge hsl(240, 40%, 60%);
 }
@@ -163,7 +165,9 @@ button:hover {
 
 /* tablet */
 @media screen and (min-width: 700px) {
+
   /* header */
+
   header {
     background-color: hsl(30, 13%, 91%);
     width: 100%;
@@ -237,7 +241,7 @@ button:hover {
   .section-list h2 {
     font-family: 'Notable', sans-serif;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: hsl(240, 40%, 60%);
     text-shadow: 0.1rem 0.1rem grey, 0.1rem 0.2rem darkgray, 0.3rem 0.4rem black;
     padding: 0;
@@ -257,7 +261,7 @@ button:hover {
 
   #sectionList > div > div > ol > li > div {
     position: absolute;
-    top: 18%;
+    top: 14%;
     left: 0%;
     right: 0%;
     bottom: 60%;
@@ -277,9 +281,9 @@ button:hover {
     font-weight: 300;
     position: absolute;
     padding: 0.8em;
-    top: 65%;
-    left: 10%;
-    bottom: 22%;
+    top: 52%;
+    left: 5%;
+    bottom: 18%;
     border-radius: 33em;
     border: 0.5em ridge hsl(240, 40%, 60%);
   }
@@ -335,7 +339,9 @@ button:hover {
   .main-page {
     background-color: hsl(30, 13%, 91%);
   }
+
   /* section list */
+
   ol {
     padding: 0;
   }
@@ -426,9 +432,9 @@ button:hover {
     font-weight: 500;
     position: absolute;
     padding: 1em 0.6em;
-    top: 76%;
+    top: 75%;
     left: 43%;
-    bottom: 26.5%;
+    bottom: 15%;
     border-radius: 33em;
     border: 0.5em ridge hsl(240, 40%, 60%);
   }
@@ -450,7 +456,7 @@ button:hover {
 
   .map {
     position: absolute;
-    top: 3%;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;

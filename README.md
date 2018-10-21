@@ -4,6 +4,8 @@
 
 ## by _**PAUL STANDLEY**_
 
+A map of Oldham info from Foursquare
+
 _Udacitys last project for the FEND Nano Degree Program_ _**[NanoDegrees](udacity.com/nanodegrees)**_
 
 ---
@@ -14,11 +16,24 @@ _Udacitys last project for the FEND Nano Degree Program_ _**[NanoDegrees](udacit
 
 ## Quick Start
 
-**BASH**
+```BASH
+cd neighborhood-map
+npm start
+```
 
 ```BASH
-cd Neighborhood-Map/neighborhood-map
-npm start
+cd neighborhood-map
+yarn start
+```
+
+### For servise worker create a propduction build
+
+```BASH
+npm build
+```
+
+```BASH
+yarn build
 ```
 
 ---
