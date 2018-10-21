@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-.App::after {
+.App {
   margin: 0;
   padding: 0;
   font-family: 'Indie Flower', cursive;
@@ -12,12 +12,13 @@
 .main-page {
   background-color: hsl(30, 13%, 91%);
   padding: 0;
+  margin: 0;
 }
 /* header */
 header {
   background-color: hsl(30, 13%, 91%);
   width: 100%;
-  padding: 1em;
+  padding: 1em 0;
   margin: 0;
   border: 0.1em ridge gray;
 }
@@ -31,7 +32,7 @@ header > h1 {
   padding: 0;
   margin: 0;
 }
-
+/* section List */
 ol {
   padding: 0;
 }
@@ -44,9 +45,9 @@ strong {
 
 #sectionInput {
   background-color: hsl(30, 13%, 91%);
-  color: hsl(5, 97%, 61%);
+  color: black;
   border: 0.2em solid gray;
-  padding: 0.4em 0.2em;
+  padding: 0.4em 0;
   margin: 0;
   font-size: 1rem;
   width: 100%;
@@ -92,6 +93,10 @@ strong {
   margin: 0;
 }
 
+ .noSection-input {
+   display: none;
+ }
+
 /* dispalyClicked */
 
 #sectionList > div > div > ol > li > div {
@@ -135,42 +140,32 @@ button {
 
 /* map */
 
+#sectionMap {
+  position: fixed;
+  top: 0vmax !important;
+  left: 0vmax !important;
+  right: 0vmax !important;
+  bottom: 0vmax !important;
+}
+
 .map {
-  padding: 0;
-}
-
-#sectionMap > div > div.map > div > div > div > div > div {
-  width: 100vmax;
-  height: 100vmax;
-}
-
-#sectionMap > div > div.map > div > div > div > iframe {
-  width: 100vmax;
-  height: 50vmax;
-}
-#sectionMap > div > div.map {
   position: fixed;
   top: 50%;
+  left: 0%;
+  right: 0%;
   bottom: 0%;
-}
-#sectionMap > div > div.map > div {
-  width: 100%;
-  height: 50%;
-}
-
-#sectionMap {
-  width: 100%;
-  height: 50%;
 }
 
 /* desktop css */
 @media screen and (min-width: 950px) {
+
   .App {
     font-family: 'Indie Flower', cursive;
   }
+
   header {
     background-color: hsl(30, 13%, 91%);
-    padding: 1.4em;
+    padding: 1.4em 0;
     margin: 0.3em;
     border: 0.2em ridge gray;
     margin: 0;
@@ -190,7 +185,7 @@ button {
   .main-page {
     background-color: hsl(30, 13%, 91%);
   }
-  
+  /* section list */
   ol {
     padding: 0;
   }
@@ -203,10 +198,10 @@ button {
 
   #sectionInput {
     background-color: hsl(30, 13%, 91%);
-    color: hsl(5, 97%, 61%);
+    color: black;
     font-size: 1.2rem;
     border: 0.1em solid gray;
-    padding: 1em 0.4em;
+    padding: 1em 0;
     margin: 0;
     width: 97%;
   }
@@ -248,6 +243,10 @@ button {
     text-shadow: 0.1rem 0.1rem grey, 0.1rem 0.2rem darkgray, 0.3rem 0.4rem black;
     padding: 0 1em;
     margin: 0;
+  }
+
+  .noSection-input {
+    display: none;
   }
 
 /* dispalyClicked */
@@ -294,28 +293,20 @@ button {
 
 /* map  */
 
-  .map {
-    top: 11.2%;
-    left: 41.2%;
+  #sectionMap {
+    position: fixed;
+    top: 0vmax;
+    left: 0vmax;
+    right: 0vmax !important;
+    bottom: 0vmax;
   }
 
-  #sectionMap > div {
-    top: 11%;
-    left: 41.2%;
-    right: 0%;
-    bottom: 0%;
+  .map {
+    position: absolute;
+    top: 11.4%;
+    left: 42%;
+    right: 0;
+    bottom: 0;
   }
   
-  #sectionMap > div > div.map {
-    top: 11%;
-    left: 41.2%;
-    right: 0%;
-    bottom: 0%;
-  }
-
-  #sectionMap > div > div.map > div {
-    width: 82.2vmax !important;
-    height: 100% !important;
-  }
-
 }

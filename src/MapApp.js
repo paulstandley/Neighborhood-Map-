@@ -4,11 +4,6 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import './index.css';
 import './App.css';
 
-const style = {
-  width: '100%',
-  height: '100%'
-}
-
 export class MapContainer extends Component {
  
   state = {
@@ -26,12 +21,7 @@ export class MapContainer extends Component {
     console.log(props.children[0]);
     console.log(props.children[0].props);
     console.log(props.children[0].props.name);//name ref on map child
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: true,
-        activeMarker: null
-      })
-    }
+    
   };
 
   onMarkerClick = (props, marker, evt) => {
@@ -66,7 +56,7 @@ export class MapContainer extends Component {
       <Map google={this.props.google} 
 
         className={'map'}
-        style={style}
+        
         initialCenter={{
           lat: 53.540203, lng: -2.102056 
         }}

@@ -9,6 +9,7 @@ import './App.css';
 
 /*
 # __TODO LIST__
+* map click lost ref important!
 * sort out css for API fecth display :)
 * set map back to desktop css 
 * sort out moblie css
@@ -216,7 +217,14 @@ https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
             placeholder="Filter foursquare list"
             value={this.state.query}
             onChange={(event) => this.updateQueryHandeler(event.target.value)}/> 
-          : ''}
+          : <input type="text" 
+            aria-label="text"
+            aria-required="true"
+            id="sectionInput" 
+            className="noSection-input" 
+            placeholder="Filter foursquare list"
+            value={this.state.query}
+            onChange={(event) => this.updateQueryHandeler(event.target.value)}/> }
            
            <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
          </section>
@@ -237,7 +245,14 @@ https://github.com/stoyan/fail/commit/41cc6ef626abef0ebee64d8f0c9f882c6d5ae144
             placeholder="Filter foursquare list"
             value={this.state.query}
             onChange={(event) => this.updateQueryHandeler(event.target.value)}/> 
-          : ''}
+          : <input type="text" 
+            aria-label="text"
+            aria-required="true"
+            id="sectionInput" 
+            className="noSection-input" 
+            placeholder="Filter foursquare list"
+            value={this.state.query}
+            onChange={(event) => this.updateQueryHandeler(event.target.value)}/>}
           <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
           </section>
         <section id="sectionMap" className="section-map">
