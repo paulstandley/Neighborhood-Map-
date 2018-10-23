@@ -6,7 +6,7 @@ import DataFile from './assets/DataFile.json';
 import ListApp from './ListApp';
 import MapApp from './MapApp';
 import './App.css';
-/* https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/ */
+
 class App extends React.Component {
 
   constructor() {
@@ -56,7 +56,7 @@ class App extends React.Component {
   }
 /* check evt list or map */
   clicked = (evt) => {
-    var errorMessage;
+    
 /* set evt to state map*/    
     if(evt.className === 'marker') {
     this.setState({

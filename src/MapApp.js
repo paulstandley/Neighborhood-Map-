@@ -72,10 +72,6 @@ export class MapContainer extends Component {
     
   }
 }
-/* https://review.udacity.com/?utm_campaign=ret_000_auto_ndxxx_submission-reviewed&utm_source=blueshift&utm_medium=email&utm_content=reviewsapp-submission-reviewed&bsft_clkid=02188fcd-3ba8-406c-a97c-4333d5d3fc3c&bsft_uid=ed91580d-4503-417b-b860-9958e533e56f&bsft_mid=d77e17dd-e848-419b-a5f9-2a8bb49f851e&bsft_eid=6f154690-7543-4582-9be7-e397af208dbd&bsft_txnid=12a7661a-afd0-466f-b310-83cb4875cf41#!/reviews/1521496
-
-https://discussions.udacity.com/t/handling-google-maps-in-async-and-fallback/34282/58 
-https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/ */
 
 export default GoogleApiWrapper(
   () => ({
