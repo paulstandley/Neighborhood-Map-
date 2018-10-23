@@ -28,7 +28,7 @@ class DispalyClicked extends Component {
       */
     return ( 
       <div className="dispalyClicked">
-        {this.props.listInfo.pick.response.photos.items[0] !== undefined  ? <aside className='img0'>{img0}</aside> : <aside className='img0'><span className="fallbackDisply">
+        {this.props.listInfo.pick.response.photos.items[0] !== undefined  ? <aside className='img0'>{img0}</aside> : <aside className='img0'><span className="fallbackDisplay">
         <h2>{this.props.listInfo.AppData.listActiveTargetName}</h2>
         <img id="pickId" src={`https://res.cloudinary.com/pieol2/image/upload/v1540143138/thankYou.png`} alt="a thank you Udacity" height="220" width="220"/>
         <h2>{this.props.listInfo.AppData.listActiveTargetAddress === undefined ? <h2>No Info</h2> : this.props.listInfo.AppData.listActiveTargetAddress }</h2>

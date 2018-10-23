@@ -6,7 +6,7 @@ import DataFile from './assets/DataFile.json';
 import ListApp from './ListApp';
 import MapApp from './MapApp';
 import './App.css';
-
+/* https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/ */
 class App extends React.Component {
 
   constructor() {
@@ -15,7 +15,7 @@ class App extends React.Component {
       foursquare: {},
       DATAFILE: DataFile.response.groups[0].items.sort(sortBy('venue.name')),
       query: '',
-      filtered: {},
+      errorTest: false,
       pick: {},
       listActiveTargetMarker: {},
       listActiveTargetAddress: {},
@@ -35,7 +35,7 @@ class App extends React.Component {
       return response.json();
     }).then((myJson) => {
         this.setState({foursquare: myJson.response.groups[0].items});
-    }).catch(error => console.error('Error:', error));
+    }).catch(error => alert('Error: loading foursquare api', error));
   }
 
 /* event handeler */  
@@ -51,10 +51,12 @@ class App extends React.Component {
       listActiveTargetName: {},
       listTargetIndex: null,
       listActive: false,
+      errorTest: false
     });
   }
 /* check evt list or map */
   clicked = (evt) => {
+    var errorMessage;
 /* set evt to state map*/    
     if(evt.className === 'marker') {
     this.setState({
@@ -71,8 +73,11 @@ class App extends React.Component {
         return response.json();
       }).then((pick) => {
         this.setState({pick})
-      }).catch(error => console.error('Error:', error));
+      }).catch(() => {
+        this.setState({ errorTest: true })
+      });
     }
+  
 /* set evt to list */
     }else{
     if(evt !== undefined) {
@@ -89,8 +94,11 @@ class App extends React.Component {
         return response.json();
       }).then((pick) => {
         this.setState({pick})
-      }).catch(error => console.error('Error:', error));
+      }).catch(() => {
+        this.setState({ errorTest: true });
+      });
       }
+      
     }
   };
 /* get input query then filter, return filtered or object */
@@ -136,6 +144,9 @@ class App extends React.Component {
             value={this.state.query}
             onChange={(event) => this.updateQueryHandeler(event.target.value)}/> }
            <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
+           {this.state.errorTest === true ? <span className="errorDisplay">
+          <h2 onClick={this.closeList}>Sorry error getting image click me to try again</h2>   
+          </span> : '' }
          </section>
          <section id="sectionMap" className="section-map">
            <MapApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
@@ -163,6 +174,9 @@ class App extends React.Component {
             value={this.state.query}
             onChange={(event) => this.updateQueryHandeler(event.target.value)}/>}
           <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
+          {this.state.errorTest === true ? <span className="errorDisplay">
+          <h2 onClick={this.closeList}>Sorry error getting image click me to try again</h2>
+          </span> : '' }
           </section>
         <section id="sectionMap" className="section-map">
           <MapApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} clicked={this.clicked} AppData={this.state} />
