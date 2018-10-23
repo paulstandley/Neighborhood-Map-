@@ -141,7 +141,7 @@ class App extends React.Component {
             id="sectionInput" 
             className="noSection-input" 
             placeholder="Filter foursquare list"
-            value={this.state.query}
+            value={this.state.query}// check fetch response display sorryv
             onChange={(event) => this.updateQueryHandeler(event.target.value)}/> }
            <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
            {this.state.errorTest === true ? <span className="errorDisplay">
@@ -171,7 +171,7 @@ class App extends React.Component {
             id="sectionInput" 
             className="noSection-input" 
             placeholder="Filter foursquare list"
-            value={this.state.query}
+            value={this.state.query}// check fetch response display sorry
             onChange={(event) => this.updateQueryHandeler(event.target.value)}/>}
           <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
           {this.state.errorTest === true ? <span className="errorDisplay">
