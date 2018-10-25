@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import './index.css';
 import './App.css';
+/* https://reactjs.org/docs/react-component.html#static-getderivedstatefromerror */
 
 export class MapContainer extends Component {
  
@@ -22,7 +23,16 @@ export class MapContainer extends Component {
     });
   }
 
+  gm_authFailure(){
+    window.alert("Google Maps error!");
+  }
+
+  gm_authFailure = () => {
+    window.alert("Help my code is pants");
+  }
+
   render() {
+    console.dir(this.props.google)
 // make sure there is a map or say sorry :)
     if(this.props.google.maps === undefined) {
       return ( <h2>Sorry error getting google map try to reload the page</h2> );
@@ -50,7 +60,8 @@ export class MapContainer extends Component {
             lat: current.venue.location.lat, lng: current.venue.location.lng
           }}// if clicked test index against listTargetIndex  
           animation={this.props.AppData.listActive ? (this.props.AppData.listTargetIndex === index ? '1' : '0') : '0'} /> 
-          )) 
+          ))
+          
           : // display start and all maerkers
           this.props.start.map((current, index, array) => (
         

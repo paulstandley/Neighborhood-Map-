@@ -8,7 +8,7 @@ import MapApp from './MapApp';
 import './App.css';
 
 class App extends React.Component {
-
+// https://review.udacity.com/?utm_campaign=ret_000_auto_ndxxx_submission-reviewed&utm_source=blueshift&utm_medium=email&utm_content=reviewsapp-submission-reviewed&bsft_clkid=ea10489b-a680-426e-bfe6-8f2ad56e7a8e&bsft_uid=ed91580d-4503-417b-b860-9958e533e56f&bsft_mid=bc204dfa-44cd-45b6-be5e-81bc282f57f1&bsft_eid=6f154690-7543-4582-9be7-e397af208dbd&bsft_txnid=6e3b1fff-d748-447d-a45e-16c71ee53b30#!/reviews/1525760
   constructor() {
     super();
     this.state = {
@@ -35,7 +35,7 @@ class App extends React.Component {
       return response.json();
     }).then((myJson) => {
         this.setState({foursquare: myJson.response.groups[0].items});
-    }).catch(error => alert('Error: loading foursquare api', error));
+    }).catch(() => { this.setState({ errorTest: true }) })
   }
 
 /* event handeler */  
