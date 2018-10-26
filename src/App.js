@@ -116,7 +116,12 @@ class App extends React.Component {
   }
 
   render() {
-   let filtered = this.queryMethod();       
+   let filtered = this.queryMethod();
+    if(this.props.maps !== undefined) {
+      this.props.maps.event.addDomListener(window, 'onChange', (evt) => {
+        console.log(evt);
+      });
+    }       
    return (
      <div className="App">
        <header>
