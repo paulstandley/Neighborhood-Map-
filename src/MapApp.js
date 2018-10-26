@@ -68,7 +68,7 @@ export class MapContainer extends React.Component {
     }else{
       
       return ( 
-        <MapDisplay Map Marker dataMap={this.props}/>
+        <MapDisplay dataMap={this.props}/>
       )
     }
     
