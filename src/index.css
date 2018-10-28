@@ -5,3 +5,7 @@ body {
 h5 {
   display: none;
 }
+
+#map {
+  height: 100%;
+}

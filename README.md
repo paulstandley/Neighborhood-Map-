@@ -43,6 +43,12 @@ yarn build
 **_Link_** [Rubrics](https://review.udacity.com/#!/rubrics/1351/view)
 PROJECT SPECIFICATION **Neighborhood Map (React)**
 
+```BASH
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
 ---
 
 ## **Dependencies**

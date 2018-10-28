@@ -6,13 +6,13 @@ import './App.css';
 class ListApp extends Component {
 // when you click on map marker should bounce and stop the other one :)   
   render() {
-   
+   console.log(this.props.AppData);
     return ( 
       <div>
         <h2>OLDHAM</h2> 
         <div>
           <ol>
-            {this.props.venue !== undefined ? // when text input is not an empty string 
+            {this.props.AppData.query !== '' ? // when text input is not an empty string 
             this.props.venue.map((current, index, array) => (
               <li key={index + 354352 + index} >
               {this.props.AppData.listActive !== true ? /* test for display. the h5 is not displayed but placed here to bind the text values to the object for use in displayed click */

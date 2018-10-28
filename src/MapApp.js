@@ -14,6 +14,17 @@ export class MapContainer extends Component {
     showingactiveMarker: false
   }
 
+  componentDidUpdate(prevProps) {
+    var dom = this.props.google.maps.event.addDomListener;
+    var elementDiv = Document.querySelector('#sectionMap > div > div.map > div > div > div > div > div.gm-err-message');
+    // Typical usage (don't forget to compare props):
+    if(this.props.AppData.error_gm_Aurth === prevProps.AppData.error_gm_Aurth) {
+      console.log(dom);
+      console.log(elementDiv);
+      console.log(this.props);
+    }
+  }
+
   onMarkerClick = (props, marker) => {
     this.setState({
       selectedPlace: props,
@@ -23,22 +34,24 @@ export class MapContainer extends Component {
     });
   }
 
-  gm_authFailure(){
-    window.alert("Google Maps error!");
-  }
 
-  gm_authFailure = () => {
-    window.alert("Help my code is pants");
-  }
-
+  
   render() {
-    console.dir(this.props.google)
+    console.dir(this.props)
 // make sure there is a map or say sorry :)
     if(this.props.google.maps === undefined) {
       return ( <h2>Sorry error getting google map try to reload the page</h2> );
     }else{
       return (
-        <Map google={this.props.google} 
+        {LoadingContainer}
+      )
+    }
+    
+  }
+}
+
+const LoadingContainer = (props) => (
+  <Map google={props.google} 
         className={'map'}
         initialCenter={{
           lat: 53.540203, lng: -2.102056 
@@ -46,8 +59,8 @@ export class MapContainer extends Component {
         zoom={12}
         onClick={this.onMapClicked} >
   
-        {this.props.AppData.query !== '' ? // dispaly filtered list and Marker
-        this.props.venue.map((current, index, array) => (
+        {props.AppData.query !== '' ? // dispaly filtered list and Marker
+        props.venue.map((current, index, array) => (
         
         <Marker 
           id={index}
@@ -59,34 +72,33 @@ export class MapContainer extends Component {
           position={{
             lat: current.venue.location.lat, lng: current.venue.location.lng
           }}// if clicked test index against listTargetIndex  
-          animation={this.props.AppData.listActive ? (this.props.AppData.listTargetIndex === index ? '1' : '0') : '0'} /> 
+          animation={props.AppData.listActive ? (props.AppData.listTargetIndex === index ? '1' : '0') : '0'} /> 
           ))
           
           : // display start and all maerkers
-          this.props.start.map((current, index, array) => (
+          props.start.map((current, index, array) => (
         
         <Marker 
           id={index}
           className={'marker'}
           key={index + 241242 + index} 
-          onClick={this.props.clicked}
+          onClick={props.clicked}
           name={current.venue.name}
           title={array[index].venue.location.address}
           position={{
             lat: current.venue.location.lat, lng: current.venue.location.lng
           }}// if clicked test index against listTargetIndex
-          animation={this.props.AppData.listActive ? (this.props.AppData.listTargetIndex === index ? '1' : '0') : '0'} />       
+          animation={props.AppData.listActive ? (props.AppData.listTargetIndex === index ? '1' : '0') : '0'} />       
           )) }
       </Map>
-      )
-    }
-    
-  }
-}
+).then(() => {
+  if(this.props.google)
+})
 
 export default GoogleApiWrapper(
   () => ({
-    apiKey: ("AIzaSyDcheCgHTyf9zr3vcCCSOo0wrq_W95sUcA")
+    apiKey: ("AIzaSyDcheCgHTyf9zr3vcCCSOo0wrq_W95sUcA"),
+    LoadingContainer: LoadingContainer
   }
 ))(MapContainer)
 
