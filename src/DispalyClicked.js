@@ -4,9 +4,8 @@ class DispalyClicked extends Component {
   
   render() {
     console.log(this.props);
-    
 /* check for data get and display or diplay fallbacks */
-    if(this.props.listInfo.AppData.listTargetIndex === null) {
+    if(this.props.listInfo.pick.response === undefined) {
       if(this.props.listInfo.AppData.DispalyClicked === false) {      
         var prefix0 = this.props.listInfo.pick.response.photos.items[0].prefix;
         var suffix0 = this.props.listInfo.pick.response.photos.items[0].suffix;
@@ -30,18 +29,16 @@ class DispalyClicked extends Component {
       */
     return ( 
       <div className="dispalyClicked">
-        {this.props.listInfo.pick.response.photos !== undefined  ? <aside className='img0'>{img0}</aside> : <aside className='img0'><span className="fallbackDisplay">
+        {this.props.listInfo.pick.response !== undefined  ? <aside className='img0'>{img0}</aside> : <aside className='img0'><span className="fallbackDisplay">
         <h2>{this.props.listInfo.AppData.listActiveTargetName}</h2>
         <img id="pickId" src={`https://res.cloudinary.com/pieol2/image/upload/v1540143138/thankYou.png`} alt="a thank you Udacity" height="220" width="220"/>
-        <h2>{this.props.listInfo.AppData.listActiveTargetAddress === undefined ? <h2>No Info</h2> : this.props.listInfo.AppData.listActiveTargetAddress }</h2>
+        <h2>{this.props.listInfo.AppData.listActiveTargetAddress === null ? <h2>No Info</h2> : this.props.listInfo.AppData.listActiveTargetAddress}</h2>
         </span></aside> }         
         <button onClick={this.props.listInfo.closeList} >close</button>
       </div>
      );
-    }
-
-    return (<button onClick={this.props.listInfo.closeList} >Soz no info</button>);
-
+    }// this. is rendered ?
+    return (<span><h2>YO</h2><button onClick={this.props.listInfo.closeList} >Soz no info</button></span>);
   }
 }
  

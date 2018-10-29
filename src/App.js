@@ -46,7 +46,7 @@ class App extends React.Component {
   displayMap = () => {
  
     /* call render scrip and pass in google map url and api key */
-    renderScripElement('https://maps.googleapis.com/maps/api/js?key=AIzaSyDcheCgHTyf9zr3vcCCSOo0wrq_W95sUcA1&callback=initMap');
+    renderScripElement('https://maps.googleapis.com/maps/api/js?key=AIzaSyDcheCgHTyf9zr3vcCCSOo0wrq_W95sUcA&callback=initMap');
       
   
     /* set init map to window gobal object */
@@ -273,7 +273,7 @@ console.log(map.currentTarget)
        <header>
          <h1>Neighborhood Map</h1>
        </header>    
-       {this.state.filtered.length !== 0 ? // display filtered list and map markers
+       {this.state.query !== '' ? // display filtered list and map markers
        <main id="mainPage" className="main-page">
          <section id="sectionList" className="section-list">
          {this.state.listActive === false ? 
@@ -286,18 +286,18 @@ console.log(map.currentTarget)
             value={this.state.query}
             onChange={(event) => this.updateQueryHandeler(event.target.value)}/> 
           : /* remove when list is active */ 
-          <input type="text" 
-            aria-label="text"
-            aria-required="true"
-            id="sectionInput" 
-            className="noSection-input" 
-            placeholder="Filter foursquare list"
-            value={this.state.query}// check fetch response display sorryv
-            onChange={(event) => this.updateQueryHandeler(event.target.value)}/> }
-           <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={this.state.filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
-           {this.state.errorTest === true ? <span className="errorDisplay">
+          this.state.errorTest === true ? <span className="errorDisplay">
           <h2 onClick={this.closeList}>Sorry error getting image click me to try again</h2>   
-          </span> : '' }
+          </span> : 
+          <input type="text" 
+          aria-label="text"
+          aria-required="true"
+          id="sectionInput" 
+          className="noSection-input" 
+          placeholder="Filter foursquare list"
+          value={this.state.query}// check fetch response display sorryv
+          onChange={(event) => this.updateQueryHandeler(event.target.value)}/> }
+         <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={this.state.filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>      
          </section>
          <section id="sectionMap" className="section-map">
            <div id='map'></div> 
@@ -316,7 +316,9 @@ console.log(map.currentTarget)
             value={this.state.query}
             onChange={(event) => this.updateQueryHandeler(event.target.value)}/> 
           : /* remove when list is active */ 
-          <input type="text" 
+          this.state.errorTest === true ? <span className="errorDisplay">
+          <h2 onClick={this.closeList}>Sorry error getting image click me to try again</h2>
+          </span> :  <input type="text" 
             aria-label="text"
             aria-required="true"
             id="sectionInput" 
@@ -325,9 +327,6 @@ console.log(map.currentTarget)
             value={this.state.query}// check fetch response display sorry
             onChange={(event) => this.updateQueryHandeler(event.target.value)}/>}
           <ListApp closeList={this.closeList} start={this.state.DATAFILE} venue={this.state.filtered} pick={this.state.pick} clicked={this.clicked} AppData={this.state}/>
-          {this.state.errorTest === true ? <span className="errorDisplay">
-          <h2 onClick={this.closeList}>Sorry error getting image click me to try again</h2>
-          </span> : '' }
           </section>
         <section id="sectionMap" className="section-map">
         <div id='map'></div>
