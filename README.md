@@ -28,13 +28,19 @@ yarn start
 
 ### For servise worker create a propduction build
 
-```BASH
-npm build
-```
+You can run a production by using the following commands ``` :) ```
 
 ```BASH
-yarn build
+npm serve -s build
 ```
+
+And then
+
+```BASH
+npm run serve
+```
+
+Check localhost: 5000
 
 ---
 

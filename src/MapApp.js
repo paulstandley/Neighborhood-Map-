@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import './index.css';
 import './App.css';
-/* https://reactjs.org/docs/react-component.html#static-getderivedstatefromerror */
 
 export class MapContainer extends Component {
  
@@ -14,18 +13,6 @@ export class MapContainer extends Component {
     showingactiveMarker: false
   }
 
-  componentDidUpdate() {
-    /* manual check not enoght time to redo so boge :( */
-      const mapError = window.document.querySelector('#sectionMap > div > div.map > div > div > div > div > div.gm-err-message');
-      const errorString = 'This page didn\'t load Google Maps correctly. See the JavaScript console for technical details.';
-      console.log(mapError)
-      console.log(errorString);
-      if(mapError === undefined) {
-        if(mapError.innerText === errorString) {
-          this.gm_authFailure();
-        }
-      }
-  }
   onMarkerClick = (props, marker) => {
     this.setState({
       selectedPlace: props,
@@ -35,24 +22,11 @@ export class MapContainer extends Component {
     });
   }
 
-  gm_authFailure(){
-    window.alert("Google Maps error!");
-  }
-
-  gm_authFailure = () => {
-    window.alert("Help my code is pants");
-  }
-
   render() {
-    console.dir(this.props.google)
 // make sure there is a map or say sorry :)
     if(this.props.google.maps === undefined) {
       return ( <h2>Sorry error getting google map try to reload the page</h2> );
-    }else{
-      console.log(this.refs);
-      
-      const mapthing = Map;
-      console.log(mapthing);
+    }else{      
       return (
         <Map google={this.props.google} 
         className={'map'}
@@ -93,6 +67,9 @@ export class MapContainer extends Component {
           }}// if clicked test index against listTargetIndex
           animation={this.props.AppData.listActive ? (this.props.AppData.listTargetIndex === index ? '1' : '0') : '0'} />       
           )) }
+          {this.props.AppData.mapError === true ? <span className="errorDisplay">
+          <h2 onClick={this.closeList}>Sorry error getting map click me to try again</h2>
+          </span> : '' }
       </Map>
       )
     }
@@ -102,7 +79,7 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper(
   () => ({
-    apiKey: ("AIzaSyDcheCgHTyf9zr3vcCCSOo0wrq_W95sUcA1")
+    apiKey: ("AIzaSyDcheCgHTyf9zr3vcCCSOo0wrq_W95sUcA")
   }
 ))(MapContainer)
 

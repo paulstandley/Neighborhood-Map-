@@ -6,9 +6,10 @@ import DataFile from './assets/DataFile.json';
 import ListApp from './ListApp';
 import MapApp from './MapApp';
 import './App.css';
+import './index.css';
 
 class App extends React.Component {
-// https://review.udacity.com/?utm_campaign=ret_000_auto_ndxxx_submission-reviewed&utm_source=blueshift&utm_medium=email&utm_content=reviewsapp-submission-reviewed&bsft_clkid=ea10489b-a680-426e-bfe6-8f2ad56e7a8e&bsft_uid=ed91580d-4503-417b-b860-9958e533e56f&bsft_mid=bc204dfa-44cd-45b6-be5e-81bc282f57f1&bsft_eid=6f154690-7543-4582-9be7-e397af208dbd&bsft_txnid=6e3b1fff-d748-447d-a45e-16c71ee53b30#!/reviews/1525760
+
   constructor() {
     super();
     this.state = {
@@ -16,6 +17,7 @@ class App extends React.Component {
       DATAFILE: DataFile.response.groups[0].items.sort(sortBy('venue.name')),
       query: '',
       errorTest: false,
+      mapError: false,
       pick: {},
       listActiveTargetMarker: {},
       listActiveTargetAddress: {},
@@ -26,6 +28,8 @@ class App extends React.Component {
     this.updateQueryHandeler = this.updateQueryHandeler.bind(this);
     this.clicked = this.clicked.bind(this);
     this.closeList = this.closeList.bind(this);
+    // put this function on window
+    window.gm_authFailure = this.gm_authFailure;
   }
  
   componentDidMount() {
@@ -37,7 +41,6 @@ class App extends React.Component {
         this.setState({foursquare: myJson.response.groups[0].items});
     }).catch(() => { this.setState({ errorTest: true }) })
   }
-
 /* event handeler */  
   updateQueryHandeler = (query) => {
     this.setState({ query: query.trim()} );        
@@ -55,8 +58,7 @@ class App extends React.Component {
     });
   }
 /* check evt list or map */
-  clicked = (evt) => {
-    
+  clicked = (evt) => { 
 /* set evt to state map*/    
     if(evt.className === 'marker') {
     this.setState({
@@ -77,7 +79,6 @@ class App extends React.Component {
         this.setState({ errorTest: true })
       });
     }
-  
 /* set evt to list */
     }else{
     if(evt !== undefined) {
@@ -97,8 +98,7 @@ class App extends React.Component {
       }).catch(() => {
         this.setState({ errorTest: true });
       });
-      }
-      
+      } 
     }
   };
 /* get input query then filter, return filtered or object */
@@ -114,7 +114,6 @@ class App extends React.Component {
     }
     return filtered;
   }
-
   render() {
    let filtered = this.queryMethod();       
    return (
@@ -185,6 +184,10 @@ class App extends React.Component {
       }       
      </div>
    );
+  }
+  /* this funtion is on window */
+  gm_authFailure(){
+    window.alert("Google Maps error may need an API key");
   }
 }
 
