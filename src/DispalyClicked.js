@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 
 class DispalyClicked extends Component {
   
-  render() { 
+  render() {
+    console.log(this.props);
+    
 /* check for data get and display or diplay fallbacks */
-    if(this.props.listInfo.pick.meta !== undefined) {
-      if(this.props.listInfo.pick.response.photos !== undefined) {      
+    if(this.props.listInfo.AppData.listTargetIndex === null) {
+      if(this.props.listInfo.AppData.DispalyClicked === false) {      
         var prefix0 = this.props.listInfo.pick.response.photos.items[0].prefix;
         var suffix0 = this.props.listInfo.pick.response.photos.items[0].suffix;
         var size0 = this.props.listInfo.pick.response.photos.items[0].width;
