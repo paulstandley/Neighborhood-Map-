@@ -14,6 +14,18 @@ export class MapContainer extends Component {
     showingactiveMarker: false
   }
 
+  componentDidUpdate() {
+    /* manual check not enoght time to redo so boge :( */
+      const mapError = window.document.querySelector('#sectionMap > div > div.map > div > div > div > div > div.gm-err-message');
+      const errorString = 'This page didn\'t load Google Maps correctly. See the JavaScript console for technical details.';
+      console.log(mapError)
+      console.log(errorString);
+      if(mapError === undefined) {
+        if(mapError.innerText === errorString) {
+          this.gm_authFailure();
+        }
+      }
+  }
   onMarkerClick = (props, marker) => {
     this.setState({
       selectedPlace: props,
@@ -37,6 +49,10 @@ export class MapContainer extends Component {
     if(this.props.google.maps === undefined) {
       return ( <h2>Sorry error getting google map try to reload the page</h2> );
     }else{
+      console.log(this.refs);
+      
+      const mapthing = Map;
+      console.log(mapthing);
       return (
         <Map google={this.props.google} 
         className={'map'}
@@ -86,7 +102,7 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper(
   () => ({
-    apiKey: ("AIzaSyDcheCgHTyf9zr3vcCCSOo0wrq_W95sUcA")
+    apiKey: ("AIzaSyDcheCgHTyf9zr3vcCCSOo0wrq_W95sUcA1")
   }
 ))(MapContainer)
 
