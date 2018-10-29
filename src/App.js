@@ -24,6 +24,7 @@ class App extends React.Component {
       listActiveTargetName: {},
       listTargetIndex: null,
       listActive: false,
+      animate: ['BOUNCE','DROP']
     };
     this.updateQueryHandeler = this.updateQueryHandeler.bind(this);
     this.clicked = this.clicked.bind(this);
@@ -43,44 +44,127 @@ class App extends React.Component {
   }
 
   displayMap = () => {
+ 
     /* call render scrip and pass in google map url and api key */
     renderScripElement('https://maps.googleapis.com/maps/api/js?key=AIzaSyDcheCgHTyf9zr3vcCCSOo0wrq_W95sUcA&callback=initMap');
+      
+  
     /* set init map to window gobal object */
     window.initMap = this.initMap;
   }
 
 /* init map */
-  initMap = () => {
+
+  _initMap = () => {
+    
+    var clickBounce;
     var map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: 53.540203, lng: -2.102056 },
-      zoom: 12
+      zoom: 11
     });
-    // setup markers filtered or from json
-    if(this.state.query === '') {
-// json      
-    this.state.DATAFILE.map((current, index, array) => {
-      var marker = new window.google.maps.Marker({
-        position: { lat: current.venue.location.lat, lng: current.venue.location.lng }, 
-        map: map,
-        title: array[index].venue.location.address,
-        id: index,
-        key: index + 241242 + index, 
-        name: current.venue.name
-        });
-      })
-    }else{
-// filtered      
-      this.state.filtered.map((current, index, array) => {
-        var marker = new window.google.maps.Marker({
-          position: { lat: current.venue.location.lat, lng: current.venue.location.lng }, 
-          map: map,
-          title: array[index].venue.location.address,
-          id: index,
-          key: index + 448365 + index, 
-          name: current.venue.name
+    if (this.state.listActive) {
+      clickBounce = window.google.maps.Animation[this.state.animate[0]];
+      // setup markers filtered or from json
+      if (this.state.query === '') {
+        clickBounce = window.google.maps.Animation[this.state.animate[1]];
+        // json      
+        this.state.DATAFILE.map((current, index, array) => {
+          var marker = new window.google.maps.Marker({
+            position: { lat: current.venue.location.lat, lng: current.venue.location.lng },
+            map: map,
+            title: array[index].venue.location.address,
+            id: index,
+            key: index + 241242 + index,
+            name: current.venue.name,
+            animation: clickBounce,
+            icon: 'https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png'
           });
-        })
+          window.google.maps.event.addListener(marker, 'click', this.mapClickMethod(map, marker, current));
+        });
+      }
+      else {
+        // filtered      
+        this.state.filtered.map((current, index, array) => {
+          var marker = new window.google.maps.Marker({
+            position: { lat: current.venue.location.lat, lng: current.venue.location.lng },
+            map: map,
+            title: array[index].venue.location.address,
+            id: index,
+            key: index + 448365 + index,
+            name: current.venue.name,
+            animation: clickBounce,
+            icon: 'https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png'
+          });
+          window.google.maps.event.addListener(marker, 'click', this.mapClickMethod(map, marker, current));
+        });
+      }
     }
+    else {
+      // setup markers filtered or from json
+      if (this.state.query === '') {
+        // json      
+        this.state.DATAFILE.map((current, index, array) => {
+          var marker = new window.google.maps.Marker({
+            position: { lat: current.venue.location.lat, lng: current.venue.location.lng },
+            map: map,
+            title: array[index].venue.location.address,
+            id: index,
+            key: index + 241242 + index,
+            name: current.venue.name,
+            animation: clickBounce,
+            icon: 'https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png'
+          });
+          window.google.maps.event.addListener(marker, 'click', this.mapClickMethod(map, marker, current));
+        });
+      }
+      else {
+        // filtered      
+        this.state.filtered.map((current, index, array) => {
+          var marker = new window.google.maps.Marker({
+            position: { lat: current.venue.location.lat, lng: current.venue.location.lng },
+            map: map,
+            title: array[index].venue.location.address,
+            id: index,
+            key: index + 448365 + index,
+            name: current.venue.name,
+            animation: clickBounce,
+            icon: 'https://res.cloudinary.com/pieol2/image/upload/v1538509364/planet.png'
+          });
+          window.google.maps.event.addListener(marker, 'click', this.mapClickMethod(map, marker, current));
+        });
+      }
+    }
+  };
+  mapClickMethod(map, marker, current) {
+    console.log(map);
+    console.log(marker);
+    console.log(current);
+
+    this.clicked(map, marker, current);
+
+    //this.clicked(marker);
+    return function () {
+      
+      map.setZoom(14);
+      window.setTimeout(function () {
+        map.setZoom(11);
+        marker.setAnimation(window.google.maps.Animation.DROP);
+      }, 6000);
+      map.setCenter(marker.getPosition({ lat: current.venue.location.lat, lng: current.venue.location.lng }));
+      marker.animation = window.google.maps.Animation.BOUNCE;
+    };
+  }
+
+  get initMap() {
+    return this._initMap;
+  }
+  set initMap(value) {
+    console.log(value);
+    this._initMap = value;
+  }
+
+  gm_authFailure() {
+    window.alert("Google Maps error!");
   }
 
 /* event handeler update state then rerender map */  
@@ -124,14 +208,14 @@ class App extends React.Component {
     });
   }
 /* check evt list or map */
-  clicked = (evt) => {  
+  clicked = (map, marker, current) => {  
 /* set evt to state map*/    
-    if(evt.className === 'marker') {
+    if(map.currentTarget === undefined) {// chande to stop render onload :)
     this.setState({
-      listActiveTargetName: evt.name,
-      listActiveTargetMarker: evt,
-      listActiveTargetAddress: evt.title,
-      listTargetIndex: Number(evt.id),
+      listActiveTargetName: current.venue.name,
+      listActiveTargetMarker: marker,
+      listActiveTargetAddress: current.venue.location.address,
+      listTargetIndex: Number(marker.id),
       listActive: true
     })/* get target index info for fetch */  
     if(this.state.listTargetIndex !== null) {
@@ -146,16 +230,29 @@ class App extends React.Component {
       });
     }/* set evt to list */
     }else{
-    if(evt !== undefined) {
+    if(map.currentTarget !== undefined) {
+console.log(map.target.innerText)
+console.log(map)
+console.dir(marker)
+console.log(map.type)
+console.log(map.currentTarget)
+      var targetElement = map.currentTarget;
+      var tarIndex = targetElement.getAttribute('id');
+      var tarName =  targetElement.getElementsByTagName('h3');
+      var tarAdd = targetElement.getElementsByTagName('h5');
+      console.log(Number(tarIndex));
+      console.log(tarName[0].innerText);
+      console.log(tarAdd[0].innerText);
       this.setState({ 
-        listActiveTargetMarker: evt.currentTarget,
-        listActiveTargetAddress: evt.currentTarget.childNodes[2].innerText,
-        listActiveTargetName: evt.currentTarget.childNodes[1].innerText,
-        listActive: true,
-        listTargetIndex: Number(evt.currentTarget.id)
+        listActiveTargetName: tarName[0].innerText,
+        listActiveTargetMarker: map,
+        listActiveTargetAddress: tarAdd[0].innerText,
+        listTargetIndex: Number(tarIndex),
+        listActive: true
        })/* get target index info for fetch */
-      let num1 = Number(evt.currentTarget.id);
+      let num1 = Number(tarIndex);
       let picked1 = this.state.DATAFILE[num1].venue.id;
+      console.log(picked1)
       fetch(`https://api.foursquare.com/v2/venues/${picked1}/photos?client_id=AZCVJUXLZ4L2HW1W5XXE5AQBHZVXFWFK3PASLVFJGL4BVRXH&client_secret=VP5GYXQT3E3IDSSOEV5BWCKIAUGLJ4D5RX3NU2B305NSDT0P&v=20180826`).then((response) => {
         return response.json();
       }).then((pick) => {
@@ -168,7 +265,7 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.props)       
+    
    return (
      <div className="App">
        <header>
@@ -243,12 +340,22 @@ class App extends React.Component {
 function renderScripElement(srcUrl) {
 /* make sure its the first script tag make a script tag add atrrs */  
   const firstChildScriptTag = window.document.getElementsByTagName('script')[0];
+  const secondChildScriptTag = window.document.getElementsByTagName('script')[1];
   const scriptTag = window.document.createElement('script');
+  const scriptTag1 = window.document.createElement('script');
   scriptTag.src = srcUrl;
   scriptTag.defer = true;  
   scriptTag.async = true;
+  const name = `
+  ${function gm_authFailure() {
+    window.alert("Google Maps error!");
+  }}`;
+  scriptTag1.innerHTML = name; // harmless in this case :)
+  /*  */
 /* then place it in the dom as a first child */ 
   firstChildScriptTag.parentNode.insertBefore(scriptTag, firstChildScriptTag);
+  secondChildScriptTag.parentNode.insertBefore(scriptTag1, secondChildScriptTag);
+  //secondChildScriptTag.parentNode.insertBefore(inside, secondChildScriptTag);
 }
 
 function gm_authFailure() {

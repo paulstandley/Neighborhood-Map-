@@ -6,7 +6,7 @@ import './App.css';
 class ListApp extends Component {
 // when you click on map marker should bounce and stop the other one :)   
   render() {
-   console.log(this.props.AppData);
+
     return ( 
       <div>
         <h2>OLDHAM</h2> 
